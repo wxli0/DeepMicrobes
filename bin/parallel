@@ -116,7 +116,7 @@ if($::opt_nonall or $::opt_onall) {
 	join(" ",
 	     ((defined $::opt_u) ? "-u" : ""),
 	     ((defined $::opt_group) ? "-g" : ""),
-	     ((defined @::opt_v) ? "-vv" : ""),
+	     ((@::opt_v) ? "-vv" : ""),
 	     ((defined $::opt_D) ? "-D" : ""),
 	     ((defined $::opt_timeout) ? "--timeout ".$::opt_timeout : ""),
 	);
@@ -582,7 +582,7 @@ sub parse_options {
 	    print STDERR "$Global::progname: -H has been retired. Use --halt.\n";
             ::wait_and_exit(255);
     }
-    if(defined @::opt_v) { $Global::verbose = $#::opt_v+1; } # Convert -v -v to v=2
+    if(@::opt_v) { $Global::verbose = $#::opt_v+1; } # Convert -v -v to v=2
     $Global::debug = (defined $::opt_D);
     if(defined $::opt_X) { $Global::ContextReplace = 1; }
     if(defined $::opt_silent) { $Global::verbose = 0; }
