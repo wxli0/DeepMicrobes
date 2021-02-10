@@ -220,6 +220,8 @@ def main():
     kmer = args.kmer
     
     # checking files: vocab, input_seq
+    print("current dir is:", os.getcwd())
+    print("vocab is:", vocab)
     assert os.path.exists(vocab), (
         'Please provide the vocabulary file.')
     assert os.path.exists(input_seq), (
