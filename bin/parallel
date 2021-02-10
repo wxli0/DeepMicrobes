@@ -628,9 +628,9 @@ sub parse_options {
     if(defined $::opt_version) { version(); wait_and_exit(0); }
     if(defined $::opt_bibtex) { bibtex(); wait_and_exit(0); }
     if(defined $::opt_show_limits) { show_limits(); }
-    if(defined @::opt_sshlogin) { @Global::sshlogin = @::opt_sshlogin; }
-    if(defined @::opt_sshloginfile) { read_sshloginfiles(@::opt_sshloginfile); }
-    if(defined @::opt_return) { push @Global::ret_files, @::opt_return; }
+    if(@::opt_sshlogin) { @Global::sshlogin = @::opt_sshlogin; }
+    if(@::opt_sshloginfile) { read_sshloginfiles(@::opt_sshloginfile); }
+    if(@::opt_return) { push @Global::ret_files, @::opt_return; }
     if(not defined $::opt_recstart and
        not defined $::opt_recend) { $::opt_recend = "\n"; }
     if(not defined $::opt_blocksize) { $::opt_blocksize = "1M"; }
@@ -663,7 +663,7 @@ sub parse_options {
             $Global::grouped = 0;
         }
     }
-    if(defined @::opt_trc) {
+    if(@::opt_trc) {
         push @Global::ret_files, @::opt_trc;
         $::opt_transfer = 1;
         $::opt_cleanup = 1;
@@ -1538,19 +1538,19 @@ sub parse_sshlogin {
     if($::opt_transfer or @::opt_return or $::opt_cleanup or @::opt_basefile) {
         if(not remote_hosts()) {
             # There are no remote hosts
-            if(defined @::opt_trc) {
+            if(@::opt_trc) {
                 print $Global::original_stderr
                     "parallel: Warning: --trc ignored as there are no remote --sshlogin\n";
             } elsif (defined $::opt_transfer) {
                 print $Global::original_stderr
                     "parallel: Warning: --transfer ignored as there are no remote --sshlogin\n";
-            } elsif (defined @::opt_return) {
+            } elsif (@::opt_return) {
                 print $Global::original_stderr
                     "parallel: Warning: --return ignored as there are no remote --sshlogin\n";
             } elsif (defined $::opt_cleanup) {
                 print $Global::original_stderr
                     "parallel: Warning: --cleanup ignored as there are no remote --sshlogin\n";
-            } elsif (defined @::opt_basefile) {
+            } elsif (@::opt_basefile) {
                 print $Global::original_stderr
                     "parallel: Warning: --basefile ignored as there are no remote --sshlogin\n";
             }
