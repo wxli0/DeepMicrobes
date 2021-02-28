@@ -1,1 +1,8 @@
 tokens_merged_12mers.txt
+pipelines/seq-shuf*
+**/__pycache__/
+d__Archaea_full
+**/*.fastq
+**/*.fa
+**/*.tfrec
+weights_species
