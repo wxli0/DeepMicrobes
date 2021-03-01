@@ -1,30 +1,30 @@
 #!/usr/bin/env python
-# from __future__ import absolute_import
-# from __future__ import division
-# from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 
-# from absl import flags
-# from absl import app as absl_app
+from absl import flags
+from absl import app as absl_app
 
 import numpy as np
 # import tensorflow as tf
 
-# from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
-#     embed_lstm, embed_lstm_attention, seq2species
+from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
+    embed_lstm, embed_lstm_attention, seq2species
 
-# from models.input_pipeline import input_function_train_kmer, input_function_train_one_hot, \
-#     input_function_predict_kmer, input_function_predict_one_hot, \
-#     input_function_train_kmer_pad_to_fixed_len, input_function_predict_kmer_pad_to_fixed_len
+from models.input_pipeline import input_function_train_kmer, input_function_train_one_hot, \
+    input_function_predict_kmer, input_function_predict_one_hot, \
+    input_function_train_kmer_pad_to_fixed_len, input_function_predict_kmer_pad_to_fixed_len
 
-# from models.define_flags import universal_flags, model_specific_flags_embed_cnn, \
-#     model_specific_flags_embed_lstm, flags_of_mode
+from models.define_flags import universal_flags, model_specific_flags_embed_cnn, \
+    model_specific_flags_embed_lstm, flags_of_mode
 
-# from models.format_prediction import prob2npy, top_n_class, paired_report, \
-#     prob2npy_paired, single_report
+from models.format_prediction import prob2npy, top_n_class, paired_report, \
+    prob2npy_paired, single_report
 
-# from utils.logs import hooks_helper
-# from utils.logs import logger
+from utils.logs import hooks_helper
+from utils.logs import logger
 
 
 # import sys
