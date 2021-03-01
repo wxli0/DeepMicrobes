@@ -16,13 +16,13 @@ seq = ''
 for line in inFile:
     if line[0] == ">":
         if header != '':
-            print header
-            print revComp(seq.upper())
+            print(header)
+            print(revComp(seq.upper()))
 
         header = line.strip()
         seq = ''
     else:
         seq += line.strip()
 
-print header
-print revComp(seq.upper())
+print(header)
+print(revComp(seq.upper()))
