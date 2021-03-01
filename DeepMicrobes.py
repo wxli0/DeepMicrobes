@@ -357,7 +357,7 @@ def main(_):
         train(flags.FLAGS, model_fn, 'dataset_name')
 
 if __name__ == "__main__":
-    tf.logging.info("logging info")
+    print("logging info")
     tf.logging.set_verbosity(tf.logging.INFO)
     tf.logging.info("universal flags")
     universal_flags()
