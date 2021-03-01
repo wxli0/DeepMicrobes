@@ -140,7 +140,7 @@ def test_set_convert2tfrecord(input_seq, output_tfrec, kmer, vocab, seq_type):
         seq_type: string, reads format, should be fasta or fastq.
 
     """
-    print("input_seq is:", input_seq)
+    tf.logging.info("input_seq is:", input_seq)
     tf.logging.info("Parsing vocabulary")
     word_to_dic = vocab_dict(vocab)
     with tf.python_io.TFRecordWriter(output_tfrec) as writer:
