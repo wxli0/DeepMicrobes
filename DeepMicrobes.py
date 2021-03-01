@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-# from __future__ import absolute_import
-# from __future__ import division
-# from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 
-# from absl import flags
-# from absl import app as absl_app
+from absl import flags
+from absl import app as absl_app
 
-# import numpy as np
-# import tensorflow as tf
+import numpy as np
+import tensorflow as tf
 
 # from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
 #     embed_lstm, embed_lstm_attention, seq2species
