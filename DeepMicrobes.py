@@ -8,7 +8,7 @@ from absl import flags
 from absl import app as absl_app
 
 import numpy as np
-# import tensorflow as tf
+import tensorflow as tf
 
 from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
     embed_lstm, embed_lstm_attention, seq2species
