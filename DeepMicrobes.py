@@ -4,8 +4,8 @@
 # from __future__ import print_function
 
 
-from absl import flags
-from absl import app as absl_app
+# from absl import flags
+# from absl import app as absl_app
 
 import numpy as np
 import tensorflow as tf
