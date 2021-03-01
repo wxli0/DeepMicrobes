@@ -357,16 +357,16 @@ def main(_):
         train(flags.FLAGS, model_fn, 'dataset_name')
 
 if __name__ == "__main__":
-    print("logging info")
+    tf.logging.info("logging info")
     tf.logging.set_verbosity(tf.logging.INFO)
-    print("universal flags")
+    tf.logging.info("universal flags")
     universal_flags()
-    print("model_specific_flags_embed_cnn")
+    tf.logging.info("model_specific_flags_embed_cnn")
     model_specific_flags_embed_cnn()
-    print("model_specific_flags_embed_lstm")
+    tf.logging.info("model_specific_flags_embed_lstm")
     model_specific_flags_embed_lstm()
-    print("flags of ode")
+    tf.logging.info("flags of ode")
     flags_of_mode()
-    print("run main")
+    tf.logging.info("run main")
     absl_app.run(main)
 
