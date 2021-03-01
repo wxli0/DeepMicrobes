@@ -171,12 +171,15 @@ cat tmp_${seq_type}_list | parallel seq2tfrec_kmer.py \
 	--input_seq={} --output_tfrec={}.${kmer}mer.tfrec \
 	--vocab=${vocab} --kmer=${kmer} \
 	--seq_type=${seq_type}
+
+echo "remove seq"
 	
 for seq in $(cat tmp_${seq_type}_list)
 do
 rm $seq
 done
 
+echo "remove tmp"
 rm tmp_${seq_type}_list
 
 cat subset*.tfrec > ../${output_name}.tfrec
