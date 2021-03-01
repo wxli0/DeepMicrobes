@@ -1,5 +1,0 @@
-g__Methanobrevibacter_A.fna 1
-g__Methanobrevibacter_B.fna 1
-g__Methanobrevibacter.fna   1
-g__Methanomethylophilus.fna 1
-g__Methanosphaera.fna   1
