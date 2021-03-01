@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 from __future__ import absolute_import
+
+print("in this file")
+
 from __future__ import division
 from __future__ import print_function
 
@@ -26,7 +29,6 @@ from models.format_prediction import prob2npy, top_n_class, paired_report, \
 from utils.logs import hooks_helper
 from utils.logs import logger
 
-print("in this file")
 
 # import sys
 # sys.path.append('models')
