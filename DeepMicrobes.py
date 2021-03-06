@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -9,7 +10,6 @@ from absl import app as absl_app
 
 import numpy as np
 import tensorflow as tf
-import sys
 
 from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
     embed_lstm, embed_lstm_attention, seq2species
@@ -26,7 +26,6 @@ from models.format_prediction import prob2npy, top_n_class, paired_report, \
 
 from utils.logs import hooks_helper
 from utils.logs import logger
-
 
 # import sys
 # sys.path.append('models')
@@ -115,30 +114,8 @@ def model_fn(features, labels, mode, params):
                 'predict': tf.estimator.export.PredictOutput(predictions)
             })
 
-    print("before calculating loss")
     loss = tf.losses.sparse_softmax_cross_entropy(
         logits=logits, labels=labels)
-    # softmax_loss = tf.nn.softmax(logits)
-    # labels = tf.cast(labels, tf.float32)
-    # # loss = -tf.reduce_sum(labels*tf.log(softmax_loss + 1e-10))
-    # loss = -tf.reduce_sum(labels*tf.log(softmax_loss))
-    print("logits is:", logits)
-    print("labels len:", labels)
-    print("loss is:", loss)
-
-    logging_hook = tf.train.LoggingTensorHook({"loss" : loss}, every_n_iter=1)
-
-    # with tf.Session() as sess:  
-    #     # sess.run(tf.global_variables_initializer())
-    #     print("in session, print labels")
-    #     print(labels.eval())
-    #     print("in session, print logits")
-    #     print(logits.eval())
-    #     print("in session, print softmax_loss")
-    #     print(softmax_loss.eval())
-    #     print("in session, print loss")
-    #     print(loss.eval())
-
 
     # Create a tensor named cross_entropy for logging purposes.
     tf.identity(loss, name='cross_entropy')
@@ -174,8 +151,7 @@ def model_fn(features, labels, mode, params):
         predictions=predictions,
         loss=loss,
         train_op=train_op,
-        eval_metric_ops=metrics,
-        training_hooks = [logging_hook])
+        eval_metric_ops=metrics)
 
 
 def train(flags_obj, model_function, dataset_name):
@@ -381,16 +357,9 @@ def main(_):
         train(flags.FLAGS, model_fn, 'dataset_name')
 
 if __name__ == "__main__":
-    print("logging info")
     tf.logging.set_verbosity(tf.logging.INFO)
-    tf.logging.info("universal flags")
     universal_flags()
-    tf.logging.info("model_specific_flags_embed_cnn")
     model_specific_flags_embed_cnn()
-    tf.logging.info("model_specific_flags_embed_lstm")
     model_specific_flags_embed_lstm()
-    tf.logging.info("flags of ode")
     flags_of_mode()
-    tf.logging.info("run main")
     absl_app.run(main)
-
