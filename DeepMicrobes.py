@@ -115,7 +115,7 @@ def model_fn(features, labels, mode, params):
             })
 
     print("before calculating loss")
-    loss = tf.losses.sparse_softmax_cross_entropy_with_logits(
+    loss = tf.losses.sparse_softmax_cross_entropy(
         logits=logits, labels=labels)
     print("logits is:", logits)
     print("labels is:", labels)
