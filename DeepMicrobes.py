@@ -115,19 +115,11 @@ def model_fn(features, labels, mode, params):
             })
 
     print("before calculating loss")
-    loss = tf.losses.sparse_softmax_cross_entropy(
+    loss = tf.losses.sparse_softmax_cross_entropy_with_logits(
         logits=logits, labels=labels)
     print("logits is:", logits)
     print("labels len:", labels)
     print("loss is:", loss)
-
-    logits_len = logits.shape[0]
-    tf.identity(logits_len, name='logits_len')
-    tf.summary.scalar('logits_len', logits_len)
-
-    label_len = labels.shape[0]
-    tf.identity(label_len, name='label_len')
-    tf.summary.scalar('label_len', label_len)
 
 
     # Create a tensor named cross_entropy for logging purposes.
