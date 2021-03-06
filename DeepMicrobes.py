@@ -121,7 +121,9 @@ def model_fn(features, labels, mode, params):
     print("logits is:", logits)
     print("labels len:", labels)
     print("loss is:", loss)
-    tf.print("logits:", logits, output_stream=sys.stdout)
+    with tf.Session() as sess:  
+        print("in session")
+        print(labels.eval())
 
 
     # Create a tensor named cross_entropy for logging purposes.
