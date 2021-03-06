@@ -121,11 +121,11 @@ def model_fn(features, labels, mode, params):
     print("labels len:", labels)
     print("loss is:", loss)
 
-    logits_len = shape(logits)[0]
+    logits_len = logits.shape[0]
     tf.identity(logits_len, name='logits_len')
     tf.summary.scalar('logits_len', logits_len)
 
-    label_len = shape(labels)[0]
+    label_len = labels.shape[0]
     tf.identity(label_len, name='label_len')
     tf.summary.scalar('label_len', label_len)
 
