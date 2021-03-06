@@ -128,16 +128,16 @@ def model_fn(features, labels, mode, params):
 
     logging_hook = tf.train.LoggingTensorHook({"loss" : loss}, every_n_iter=1)
 
-    with tf.Session() as sess:  
-        sess.run(tf.global_variables_initializer())
-        print("in session, print labels")
-        print(labels.eval())
-        print("in session, print logits")
-        print(logits.eval())
-        print("in session, print softmax_loss")
-        print(softmax_loss.eval())
-        print("in session, print loss")
-        print(loss.eval())
+    # with tf.Session() as sess:  
+    #     # sess.run(tf.global_variables_initializer())
+    #     print("in session, print labels")
+    #     print(labels.eval())
+    #     print("in session, print logits")
+    #     print(logits.eval())
+    #     print("in session, print softmax_loss")
+    #     print(softmax_loss.eval())
+    #     print("in session, print loss")
+    #     print(loss.eval())
 
 
     # Create a tensor named cross_entropy for logging purposes.
