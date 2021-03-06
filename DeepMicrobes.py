@@ -119,7 +119,7 @@ def model_fn(features, labels, mode, params):
     # loss = tf.losses.sparse_softmax_cross_entropy(
     #     logits=logits, labels=labels)
     softmax_loss = tf.nn.softmax(logits)
-    tf.cast(labels, tf.float32)
+    labels = tf.cast(labels, tf.float32)
     loss = -tf.reduce_sum(labels*tf.log(softmax_loss + 1e-10))
     print("logits is:", logits)
     print("labels len:", labels)
