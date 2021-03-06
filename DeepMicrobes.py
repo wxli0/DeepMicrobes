@@ -120,10 +120,14 @@ def model_fn(features, labels, mode, params):
     #     logits=logits, labels=labels)
     softmax_loss = tf.nn.softmax(logits)
     labels = tf.cast(labels, tf.float32)
-    loss = -tf.reduce_sum(labels*tf.log(softmax_loss + 1e-10))
+    # loss = -tf.reduce_sum(labels*tf.log(softmax_loss + 1e-10))
+    loss = -tf.reduce_sum(labels*tf.log(softmax_loss))
     print("logits is:", logits)
     print("labels len:", labels)
     print("loss is:", loss)
+
+    logging_hook = tf.train.LoggingTensorHook({"loss" : loss}, every_n_iter=1)
+
     with tf.Session() as sess:  
         sess.run(tf.global_variables_initializer())
         print("in session, print labels")
@@ -132,6 +136,8 @@ def model_fn(features, labels, mode, params):
         print(logits.eval())
         print("in session, print softmax_loss")
         print(softmax_loss.eval())
+        print("in session, print loss")
+        print(loss.eval())
 
 
     # Create a tensor named cross_entropy for logging purposes.
@@ -168,7 +174,8 @@ def model_fn(features, labels, mode, params):
         predictions=predictions,
         loss=loss,
         train_op=train_op,
-        eval_metric_ops=metrics)
+        eval_metric_ops=metrics,
+        training_hooks = [logging_hook])
 
 
 def train(flags_obj, model_function, dataset_name):
