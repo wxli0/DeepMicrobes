@@ -114,8 +114,12 @@ def model_fn(features, labels, mode, params):
                 'predict': tf.estimator.export.PredictOutput(predictions)
             })
 
-    loss = tf.losses.sparse_softmax_cross_entropy(
+    print("before calculating loss")
+    loss = tf.losses.sparse_softmax_cross_entropy_with_logits(
         logits=logits, labels=labels)
+    print("logits is:", logits)
+    print("labels is:", labels)
+    print("loss is:", loss)
 
     # Create a tensor named cross_entropy for logging purposes.
     tf.identity(loss, name='cross_entropy')
