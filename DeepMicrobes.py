@@ -122,6 +122,7 @@ def model_fn(features, labels, mode, params):
     print("labels len:", labels)
     print("loss is:", loss)
     with tf.Session() as sess:  
+        sess.run(tf.global_variables_initializer())
         print("in session, print labels")
         print(labels.eval())
         print("in sessoin, print logits")
