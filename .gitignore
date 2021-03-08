@@ -6,3 +6,8 @@ d__Archaea_full
 **/*.fa
 **/*.tfrec
 weights_species
+d__Archaea_full_w_label/
+d__Archaea_full_w_label_trimed/
+d__Archaea_label_trimed_combined.fna
+dm_full/
+d__Archaea_weights/
