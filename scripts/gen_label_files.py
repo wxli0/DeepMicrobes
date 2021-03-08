@@ -22,16 +22,15 @@ for subdir in os.listdir(base_path+dir):
             with open(filename, 'rb') as readfile:
                 shutil.copyfileobj(readfile, outfile)
 
-# # generate label_{dir}.txt
-# label_id = 0
-# with open(base_path+label_dir, 'w') as f:
-#     for subdir in os.listdir(base_path+dir):
-#         f.write(subdir+"\t"+str(label_id)+"\n")
-#         label_id += 1
+# generate label_{dir}.txt
+label_id = 0
+with open(base_path+label_dir+"label_"+dir+".txt", 'w') as f:
+    for fna_file in os.listdir(base_path+combined_dir):
+        f.write(fna_file+"\t"+str(label_id)+"\n")
+        label_id += 1
 
-# # execute fna_label.py
-
-# os.system("fna_label.py -m"+base_path+dest_dir+'/label_'+dir+'.txt'+"-o output_dir")
-
-
-# 
+# generate name2label_{dir}.txt
+with open(base_path+"data/name2label_"+dir+".txt", "w") as f:
+    for subdir in os.listdir(base_path+dir):
+        f.write(subdir+"\t"+str(label_id)+"\n")
+        label_id += 1
