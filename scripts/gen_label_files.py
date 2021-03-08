@@ -18,7 +18,7 @@ os.mkdir(base_path+combined_dir)
 # concatenate all files in subdir to _combined.fna
 for subdir in os.listdir(base_path+dir):
     with open(base_path+combined_dir+subdir+"_combined.fna", 'wb') as outfile:
-        print("pattern is:", base_path+dir+subdir+'/*.fna')
+        print("pattern is:", base_path+dir+subdir+"/"+'/*.fna')
         for filename in glob.glob(base_path+dir+subdir+'/*.fna'):
             with open(filename, 'rb') as readfile:
                 shutil.copyfileobj(readfile, outfile)
