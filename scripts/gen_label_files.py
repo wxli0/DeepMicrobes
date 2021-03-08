@@ -31,7 +31,7 @@ base_path = "/home/w328li/DeepMicrobes/"
 # with open(base_path+label_dir+"label_"+dir+".txt", 'w') as f:
 #     for fna_file in os.listdir(base_path+combined_dir):
 #         f.write(fna_file+"\t"+str(label_id)+"\n")
-        label_id += 1
+#         label_id += 1
 
 # remove name2label_{dir}.txt if exists
 if os.path.isdir(base_path+"data/name2label_"+dir+".txt"):
