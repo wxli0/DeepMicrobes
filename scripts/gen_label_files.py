@@ -20,7 +20,9 @@ for subdir in os.listdir(base_path+dir):
     with open(base_path+combined_dir+subdir+"_combined.fna", 'wb') as outfile:
         print("pattern is:", base_path+dir+'/'+subdir+'/*.fna')
         for filename in glob.glob(base_path+dir+subdir+'/*.fna'):
+            print("filename is:", filename)
             with open(filename, 'rb') as readfile:
+                print("copying")
                 shutil.copyfileobj(readfile, outfile)
 
 # remove label_{dir}.txt if exists
