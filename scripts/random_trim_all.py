@@ -1,5 +1,6 @@
 import os
 import sys
+import shutil
 
 dir = sys.argv[1]
 base_path = "/home/w328li/DeepMicrobes/"
@@ -12,8 +13,8 @@ os.mkdir(trimed_dir)
 
 # random_trim all files in label_dir
 for file in os.listdir(label_dir):
-    input_file = base_path+label_dir+file
-    output_file = base_path+trimed_dir+"label_trimed"+file[6:]
+    input_file = label_dir+file
+    output_file = trimed_dir+"label_trimed_"+file[6:]
     os.system("random_trim.py -i " + input_file \
         + "-o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
     print("done random_trim.py -i " + input_file \
