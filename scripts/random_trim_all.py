@@ -7,9 +7,9 @@ base_path = "/home/w328li/DeepMicrobes/"
 label_dir = base_path+dir+"_w_label/"
 trimed_dir = base_path+dir+"_w_label_trimed/"
 
-# if os.path.isdir(trimed_dir):
-#     shutil.rmtree(trimed_dir)
-# os.mkdir(trimed_dir)
+if os.path.isdir(trimed_dir):
+    shutil.rmtree(trimed_dir)
+os.mkdir(trimed_dir)
 
 # random_trim all files in label_dir
 for file in os.listdir(label_dir):
@@ -18,4 +18,4 @@ for file in os.listdir(label_dir):
     os.system("random_trim.py -i " + input_file \
         + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
     print("done random_trim.py -i " + input_file \
-        + "-o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
+        + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
