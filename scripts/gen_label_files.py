@@ -4,19 +4,20 @@ import shutil
 import glob
 
 dir = sys.argv[1]
-combine_dir = dir+"_combined/"
+combined_dir = dir+"_combined/"
 dest_dir = dir+"_w_label_trimed/"
 label_dir = 'label_files/'
 
 base_path = "/home/w328li/DeepMicrobes/"
 
 # remove combined_dir if exists
-if os.path.isdir(base_path+combine_dir):
-    os.rmdir(base_path+combine_dir)
+if os.path.isdir(base_path+combined_dir):
+    os.rmdir(base_path+combined_dir)
+os.mkdir(base_path+combined_dir)
 
 # concatenate all files in subdir to _combined.fna
 for subdir in os.listdir(base_path+dir):
-    with open(base_path+combine_dir+subdir+"_combined.fna", 'wb') as outfile:
+    with open(base_path+combined_dir+subdir+"_combined.fna", 'wb') as outfile:
         for filename in glob.glob(base_path+dir+subdir+'/*.fna'):
             with open(filename, 'rb') as readfile:
                 shutil.copyfileobj(readfile, outfile)
