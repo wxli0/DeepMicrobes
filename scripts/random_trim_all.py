@@ -16,6 +16,6 @@ for file in os.listdir(label_dir):
     input_file = label_dir+file
     output_file = trimed_dir+"label_trimed_"+file[6:]
     os.system("random_trim.py -i " + input_file \
-        + "-o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
+        + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
     print("done random_trim.py -i " + input_file \
         + "-o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
