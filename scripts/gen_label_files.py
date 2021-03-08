@@ -25,7 +25,6 @@ for subdir in os.listdir(base_path+dir):
 # remove label_{dir}.txt if exists
 if os.path.isdir(base_path+label_dir+"label_"+dir+".txt"):
     shutil.rmtree(base_path+label_dir+"label_"+dir+".txt")
-os.mkdir(base_path+label_dir+"label_"+dir+".txt")
 
 # generate label_{dir}.txt
 label_id = 0
@@ -37,7 +36,6 @@ with open(base_path+label_dir+"label_"+dir+".txt", 'w') as f:
 # remove name2label_{dir}.txt if exists
 if os.path.isdir(base_path+"data/name2label_"+dir+".txt"):
     shutil.rmtree(base_path+"data/name2label_"+dir+".txt")
-os.mkdir(base_path+"data/name2label_"+dir+".txt")
 
 # generate name2label_{dir}.txt
 with open(base_path+"data/name2label_"+dir+".txt", "w") as f:
