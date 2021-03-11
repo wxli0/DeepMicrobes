@@ -11,5 +11,7 @@ d__Archaea_full_w_label_trimed/
 d__Archaea_label_trimed_combined.fna
 dm_full/
 d__Archaea_weights/
+d__Archaea_weights_cp/
 dm_*/
 pipelines/model_weights/
+inputs/
