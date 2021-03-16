@@ -14,7 +14,13 @@ os.mkdir(trimed_dir)
 # random_trim all files in label_dir
 for file in os.listdir(label_dir):
     input_file = label_dir+file
-    output_file = trimed_dir+"label_trimed_"+file[6:]
+    if file.endswith('.fasta'):
+        prefix = file[:-6]
+    elif file.endswith('.fna'):
+        prefix = file[:-4]
+    elif file.endswith('.fa'):
+        prefix = file[:-3]
+    output_file = trimed_dir+"label_trimed_"+prefix
     os.system("random_trim.py -i " + input_file \
         + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
     print("done random_trim.py -i " + input_file \
