@@ -40,6 +40,12 @@ if os.path.isdir(base_path+"data/name2label_"+dir+".txt"):
 # generate name2label_{dir}.txt
 label_id=0
 with open(base_path+"data/name2label_"+dir+".txt", "w") as f:
-    for subdir in os.listdir(base_path+dir):
-        f.write(subdir+"\t"+str(label_id)+"\n")
+    for fna_file in os.listdir(base_path+combined_dir):
+        if fna_file.endswith('.fa'):
+            cur_class = fna_file[:-3]
+        elif fna_file.endswith('.fna'):
+            cur_class = fna_file[:-4]
+        elif fna_file.endswith('.fasta'):
+            cur_class = fna_file[:-6]
+        f.write(cur_class+"\t"+str(label_id)+"\n")
         label_id += 1
