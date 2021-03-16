@@ -21,7 +21,7 @@ for file in os.listdir(label_dir):
     elif file.endswith('.fa'):
         prefix = file[:-3]
     output_file = trimed_dir+"label_trimed_"+prefix
-    os.system("random_trim.py -i " + input_file \
+    os.system("random_trim.py -i " + "'"+ input_file + "'" \
         + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
-    print("done random_trim.py -i " + input_file \
+    print("done random_trim.py -i " + "'"+ input_file + "'" \
         + " -o " + output_file+ " -f fasta -l 150 -min 0 -max 75")
