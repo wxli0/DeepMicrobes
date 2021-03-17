@@ -12,6 +12,8 @@ name2label_dict = {}
 for pair in name2label_list:
     name = pair.split('\t')[0]
     label = pair.split('\t')[1]
+    if name.endswith('_combined'):
+        name = name[:-9]
     name2label_dict[label] = name
 
 classes = []
