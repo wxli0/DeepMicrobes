@@ -13,7 +13,7 @@ os.mkdir(output_path)
 
 for file in os.listdir(input_path):
     fasta_sequences = SeqIO.parse(open(input_path+'/'+file),'fasta') 
-    file_name = file.split("_trimed", 1)[1]
+    file_name = file.split("trimed_", 1)[1]
     output_file_path = output_path+"/"+file_name
     out_file= open(output_file_path, 'w')
     counter = 0
