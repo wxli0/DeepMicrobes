@@ -15,8 +15,8 @@ for index, row in df.iterrows():
 	result_file = prefix+".result.txt"
 	profile_file = prefix+".profile.txt"
 	os.system("tfrec_predict_kmer.sh \
-		-f /mnt/sda/DeepMicrobes-data/"+forward_file+" \
-		-r /mnt/sda/DeepMicrobes-data/"+reverse_file+" \
+		-f /mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000/"+forward_file+" \
+		-r /mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000/"+reverse_file+" \
 		-t fasta \
 		-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
 		-o "+prefix+" \
