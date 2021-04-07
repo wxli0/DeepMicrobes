@@ -22,3 +22,4 @@ for file in os.listdir(dir):
                 reverse_file.write(">"+id + "\n")
                 reverse_file.write(seq+"\n")
             mode = 'a'
+        print(file, "done")
