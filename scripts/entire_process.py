@@ -1,6 +1,6 @@
 import sys
 import os
-import pd 
+import pandas as pd
 
 df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index=0)
 for index, row in df.iterrows():
