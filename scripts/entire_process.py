@@ -7,7 +7,7 @@ for index, row in df.iterrows():
 	if row['Genus (reference)'] == 'Unassigned':
 		print("skip", index)
 		continue
-	print("start", index)
+	print("======================= start", index, "=======================")
 	prefix = "even_"+index
 	forward_file = prefix+"_1.fa"
 	reverse_file = prefix+"_2.fa"
@@ -34,5 +34,5 @@ for index, row in df.iterrows():
 		-o "+profile_file+" \
 		-t 50 \
 		-l /home/w328li/DeepMicrobes/data/name2label_genus.txt")
-	print("done", prefix)
+	print("======================= done", prefix, "=======================")
 	
