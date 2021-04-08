@@ -8,7 +8,7 @@ dir = sys.argv[1]
 for forward_file in os.listdir(dir):
     if forward_file.endswith('1.fa'):
         reverse_path = dir+"/"+forward_file[:-4]+"2"+".fa"
-        forward_path = dir+forward_file
+        forward_path = dir+"/"+forward_file
         output_path = dir+"/"+forward_file[:-4]+"fa"
 
         data_forward = data_reverse = ""
