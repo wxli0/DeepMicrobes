@@ -9,7 +9,7 @@ import random
 from Bio import SeqIO
 
 
-def trim_one_seq(seq, min_trim=0, max_trim=75, ori_seq_len=150, reverse):
+def trim_one_seq(seq, min_trim=0, max_trim=75, ori_seq_len=150, reverse=False):
     # generate variable-length DNA between [L-max_trim, L-min_trim]
     trim_num = random.randint(min_trim, max_trim)
     if reverse:
