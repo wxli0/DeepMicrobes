@@ -21,18 +21,19 @@ for profile_0 in os.listdir(dir):
         index = prefix[5:]
         profile_0_dict = read_profile(dir+profile_0)
         true_label = df.loc[index]['Genus (reference)']
-        recall = 0
-        if true_label in profile_0_dict:
-            recall = profile_0_dict[true_label]/sum(profile_0_dict.values())
-        recall_list.append(recall)
-        
+
         # construct profile_50_dict
         profile_50 = prefix+'.profile.txt'
         profile_50_dict = read_profile(dir+profile_50)
+
+        # calculates precision and recall
         precision = 0
+        recall = 0
         if true_label in profile_50_dict:
             precision = profile_50_dict[true_label]/sum(profile_50_dict.values())
-        precision_list.append(precision)
+            recall = profile_50_dict[true_label]/sum(profile_0_dict.values())
+        precision_list.append(precision)     
+        recall_list.append(recall)
         print("====", prefix, "true_label:", true_label, "precision:", precision, "recall:", recall)
 
 print("==== avg precision:", sum(precision_list)/len(precision_list), "avg_recall:", sum(recall_list)/len(recall_list))
