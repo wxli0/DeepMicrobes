@@ -6,7 +6,7 @@ import pandas as pd
 def read_profile(file):
     with open(file) as fin:
         rows = ( line.split('\t') for line in fin )
-        d = { row[0]:row[1] for row in rows }
+        d = { row[0]:int((row[1])[:-1]) for row in rows }
         print(d)
         return d
 
