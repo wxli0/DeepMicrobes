@@ -22,11 +22,13 @@ for forward_file in os.listdir(dir):
 			-s 4000000 \
 			-k 12")
 		print("======= done tfrec_predict_kmer =======")
-		os.system("DeepMicrobes.py \
-			--input_tfrec="+tfrec_file+" \
-			--model_name=attention \
-			--model_dir=/home/w328li/DeepMicrobes/dm_genus_balanced_embed_20_weights \
-			--embedding_dim=20 --num_classes=205")
+		os.system("DeepMicrobes.py --num_classes=205 \
+			--model_name=attention --encode_method=kmer \
+			--embedding_dim=20 --model_dir=/home/w328li/DeepMicrobes/dm_genus_balanced_embed_20_weights \
+			--input_tfrec="+tfrec_file + " \
+			--vocab_size=8390658 --cpus=1 \
+			--translate=False --pred_out=" + prefix + " \
+			--running_mode=predict_paired_class")
 		print("======= done DeepMicrobes =======")
 		os.system("paste " + category_file + " " + prob_file + " > " + result_file)
 		os.system("rm " + category_file+ " " + prob_file)
