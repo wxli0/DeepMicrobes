@@ -20,11 +20,15 @@ for profile_0 in os.listdir(dir):
         prefix = profile_0[:-14]    
         index = prefix[5:]
         profile_0_dict = read_profile(dir+profile_0)
+        print("print profile_0_dict")
+        print(profile_0_dict)
         true_label = df.loc[index]['Genus (reference)']
 
         # construct profile_50_dict
         profile_50 = prefix+'.profile.txt'
         profile_50_dict = read_profile(dir+profile_50)
+        print("print profile_50_dict")
+        print(profile_50_dict)
 
         # calculates precision and recall
         precision = 0
