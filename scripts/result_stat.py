@@ -40,4 +40,6 @@ for profile_0 in os.listdir(dir):
         recall_list.append(recall)
         print("====", prefix, "true_label:", true_label, "precision:", precision, "recall:", recall)
 
-print("==== avg precision:", sum(precision_list)/len(precision_list), "avg_recall:", sum(recall_list)/len(recall_list))
+print("==== avg precision:", sum(precision_list)/len(precision_list), "avg_recall:", sum(recall_list)/len(recall_list), "====")
+# ==== avg precision: 0.9618451870533389 avg_recall: 0.8881392156862717 ====
+
