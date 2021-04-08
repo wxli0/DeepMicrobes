@@ -1,7 +1,7 @@
 import sys
 import os
 
-dir = "/mnt/sda/DeepMicrobes-data/rumen_mags"
+dir = "/mnt/sda/DeepMicrobes-data/rumen_mags/"
 for forward_file in os.listdir(dir):
 	if forward_file.endswith('_1.fa'):
 		prefix = forward_file[:-5]
@@ -21,11 +21,13 @@ for forward_file in os.listdir(dir):
 			-o "+prefix+" \
 			-s 4000000 \
 			-k 12")
+		print("======= done tfrec_predict_kmer =======")
 		os.system("DeepMicrobes.py \
 			--input_tfrec="+tfrec_file+" \
 			--model_name=attention \
 			--model_dir=/home/w328li/DeepMicrobes/dm_genus_balanced_embed_20_weights \
 			--embedding_dim=20 --num_classes=205")
+		print("======= done DeepMicrobes =======")
 		os.system("paste " + category_file + " " + prob_file + " > " + result_file)
 		os.system("rm " + category_file+ " " + prob_file)
 		os.system("report_profile.sh \
@@ -33,10 +35,12 @@ for forward_file in os.listdir(dir):
 			-o "+profile_file+" \
 			-t 50 \
 			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_genus.txt")
+		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
 			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_genus.txt")
+		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 		
