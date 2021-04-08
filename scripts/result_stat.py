@@ -21,13 +21,13 @@ for profile_0 in os.listdir(dir):
         true_label = df.loc[index]['Genus (reference)']
         recall = 0
         if true_label in profile_0_dict:
-            recall = profile_0_dict[true_label]/profile_0_dict.values.sum()
+            recall = profile_0_dict[true_label]/sum(profile_0_dict.values())
         
         # construct profile_50_dict
         profile_50 = prefix+'.profile.txt'
         profile_50_dict = read_profile(dir+profile_50)
         precision = 0
         if true_label in profile_50_dict:
-            precision = profile_50_dict[true_label]/profile_50_dict.values.sum()
+            precision = profile_50_dict[true_label]/sum(profile_50_dict.values())
         print("====", prefix, "true_label:", true_label, "precision:", precision, "recall:", recall)
 
