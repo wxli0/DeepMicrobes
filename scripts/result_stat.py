@@ -11,13 +11,13 @@ def read_profile(file):
 
 
 df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index_col=0)
-dir = "/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results"
+dir = "/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results/"
 for profile_0 in os.listdir(dir):
     if profile_0.endswith('0_profile.txt'):
         # construct propfile_0_dict
         prefix = profile_0[:-14]    
         index = prefix[5:]
-        profile_0_dict = read_profile(profile_0)
+        profile_0_dict = read_profile(dir+profile_0)
         true_label = df[index]['Genus (reference)']
         recall = 0
         if true_label in profile_0_dict:
@@ -25,7 +25,7 @@ for profile_0 in os.listdir(dir):
         
         # construct profile_50_dict
         profile_50 = prefix+'.profile.txt'
-        profile_50_dict = read_profile(profile_50)
+        profile_50_dict = read_profile(dir+profile_50)
         precision = 0
         if true_label in profile_50_dict:
             precision = profile_50_dict[true_label]/profile_50_dict.values.sum()
