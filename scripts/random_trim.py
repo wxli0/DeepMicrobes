@@ -46,7 +46,7 @@ def main():
                         help='max # of trimmed bases')
     parser.add_argument('-l', dest='ori_seq_len', type=int, default=150,
                         help='length of raw sequences')
-    parse.add_argument('-r', dest='reverse', type=bool, default=False)
+    parser.add_argument('-r', dest='reverse', type=bool, default=False)
 
     args = parser.parse_args()
     raw_file = args.raw_file
