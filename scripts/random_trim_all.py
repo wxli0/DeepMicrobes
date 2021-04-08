@@ -2,20 +2,17 @@ import os
 import sys
 import shutil
 
-dir = sys.argv[1]
+dir = "rumen_mags"
 base_path = "/home/w328li/DeepMicrobes/"
 label_dir = base_path+dir+"/"
-trimed_dir = base_path+dir+"_trimed/"
 
-if os.path.isdir(trimed_dir):
-    shutil.rmtree(trimed_dir)
-os.mkdir(trimed_dir)
-
-# random_trim all files in label_dir
+# random_trim all files in label_dir, assume file ends with .fa
 for file in os.listdir(label_dir):
     input_file = label_dir+file
-    output_file = trimed_dir+"trimed_"+file
+    # trim from 3' and 5'
+    forward_file = label_dir+file[:-3]+"_1.fa"
+    reverse_file = label_dir+file[:-3]+"_2.fa"
     os.system("random_trim.py -i " + "'"+ input_file + "'" \
-        + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 75")
+        + " -o " + "'" + forward_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r False")
     print("done random_trim.py -i " + "'"+ input_file + "'" \
-        + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 75")
+        + " -o " + "'" + reverse_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r True")
