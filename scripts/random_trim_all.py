@@ -15,4 +15,8 @@ for file in os.listdir(label_dir):
     os.system("random_trim.py -i " + "'"+ input_file + "'" \
         + " -o " + "'" + forward_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r False")
     print("done random_trim.py -i " + "'"+ input_file + "'" \
+        + " -o " + "'" + forward_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r False")
+    os.system("random_trim.py -i " + "'"+ input_file + "'" \
+        + " -o " + "'" + reverse_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r True")
+    print("done random_trim.py -i " + "'"+ input_file + "'" \
         + " -o " + "'" + reverse_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r True")
