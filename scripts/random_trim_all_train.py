@@ -6,7 +6,7 @@ dir = "/mnt/sda/DeepMicrobes-data/labeled_genome_genus/"
 
 # random_trim all files in label_dir, assume file ends with .fa
 for file in os.listdir(dir):
-    if file.endswith('.fa')
+    if file.endswith('.fa'):
         input_file = dir+file
         # trim from 3' and 5'
         output_file = dir+file[:-3]+"_trimmed.fa"
