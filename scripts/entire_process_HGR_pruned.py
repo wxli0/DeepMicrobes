@@ -6,7 +6,7 @@ for forward_file in os.listdir(dir):
 	if forward_file.endswith('_1.fa'):
 		prefix = forward_file[:-5]
 		print("======================= start", prefix, "=======================")
-		tfrec_file = '/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results/'+prefix+".tfrec"
+		tfrec_file = prefix+".tfrec"
 		result_file = prefix+".result.txt"
 		profile_file = prefix+".profile.txt"
 		profile_0_file = prefix+".0_profile.txt"
