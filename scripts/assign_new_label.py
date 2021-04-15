@@ -5,7 +5,7 @@ from Bio import SeqIO
 label = 0
 dir = '/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned'
 for file in os.listdir(dir):
-    if file.endswith('.fa'):
+    if file.endswith('.fa') and file.startswith('label_'):
         print("label is:", label)
         mode = 'w'
         fasta_sequences = SeqIO.parse(open(os.path.join(dir, file)),'fasta')
