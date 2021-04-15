@@ -7,8 +7,8 @@ for index, row in df.iterrows():
 	if row['Genus (reference)'] == 'Unassigned':
 		print("skip", index)
 		continue
-	print("======================= start", prefix, "=======================")
 	prefix = "even_"+index
+	print("======================= start", prefix, "=======================")
 	tfrec_file = '/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results/'+prefix+".tfrec"
 	result_file = prefix+".result.txt"
 	profile_file = prefix+".profile.txt"
