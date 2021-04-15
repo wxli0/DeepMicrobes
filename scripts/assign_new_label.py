@@ -11,7 +11,7 @@ for file in os.listdir(dir):
         for fasta in fasta_sequences:
             id, sequence = fasta.id, str(fasta.seq) 
             out_file= open(os.path.join(dir, file[:-3]+'_new.fa'), mode)
-            out_file.write("> label|"+str(label)+"|"+"|".join(a.split("|", 2)[:2])+"\n")
+            out_file.write("> label|"+str(label)+"|"+"|".join(id.split("|", 2)[:2])+"\n")
             out_file.write(sequence+"\n")
             out_file.close()
             mode = 'a'
