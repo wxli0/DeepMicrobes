@@ -13,9 +13,9 @@ for forward_file in os.listdir(dir):
 		category_file = prefix+".category_paired.txt"
 		prob_file = prefix+".prob_paired.txt"
 
-		os.system("DeepMicrobes.py --num_classes=205 \
+		os.system("DeepMicrobes.py --num_classes=120 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=20 --model_dir=/mnt/sda/DeepMicrobes/HGR_embed_30_weights \
+			--embedding_dim=30 --model_dir=/mnt/sda/DeepMicrobes/HGR_embed_30_weights \
 			--input_tfrec="+tfrec_file + " \
 			--vocab_size=8390658 --cpus=1 \
 			--translate=False --pred_out=" + prefix + " \
