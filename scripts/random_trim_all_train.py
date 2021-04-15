@@ -2,7 +2,7 @@ import os
 import sys
 import shutil
 
-dir = "/mnt/sda/DeepMicrobes-data/labeled_genome_genus/"
+dir = "/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned/"
 
 # random_trim all files in label_dir, assume file ends with .fa
 for file in os.listdir(dir):
