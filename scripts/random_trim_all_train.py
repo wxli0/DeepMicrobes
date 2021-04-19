@@ -11,6 +11,6 @@ for file in os.listdir(dir):
         # trim from 3' and 5'
         output_file = dir+file[:-3]+"_trimmed.fa"
         os.system("random_trim.py -i " + "'"+ input_file + "'" \
-            + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r False")
+            + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 75 False")
         print("done random_trim.py -i " + "'"+ input_file + "'" \
-            + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 0 -r False")
+            + " -o " + "'" + output_file+ "'" + " -f fasta -l 150 -min 0 -max 75 False")
