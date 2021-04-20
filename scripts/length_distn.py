@@ -12,5 +12,6 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             lens.append(len(seq))
 
 print(lens)
-plt.hist(lens)
+binwidth = 1000
+plt.hist(lens, bins=np.arange(min(lens), max(lens) + binwidth, binwidth), density=True)
 plt.savefig("/home/w328li/DeepMicrobes/results/lens_hist.png")
