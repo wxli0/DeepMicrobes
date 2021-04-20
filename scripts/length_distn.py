@@ -17,5 +17,5 @@ binwidth = 1000
 bins = np.arange(min(lens), max(lens) + binwidth, binwidth)
 counts, edges, plot = plt.hist(lens, bins=bins, density=True)
 for i in range(len(bins)):
-    print(bins[i]+":", counts[i])
+    print(bins[i], "has", counts[i])
 plt.savefig("/home/w328li/DeepMicrobes/results/lens_hist.png")
