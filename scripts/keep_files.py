@@ -14,7 +14,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             len_dict[frag_id] = len(seq)
 
 
-fasta_sequences = SeqIO.parse(open('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/trimmed_150_var/HGR_train_var.fa') 'fasta')
+fasta_sequences = SeqIO.parse(open('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/trimmed_150_var/HGR_train_var.fa'), 'fasta')
 mode = 'w'
 for fasta in fasta_sequences:
     id, seq = fasta.id, str(fasta.seq)
