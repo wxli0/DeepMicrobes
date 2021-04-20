@@ -11,5 +11,6 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             id, seq = fasta.id, str(fasta.seq)
             lens.append(len(seq))
 
+print(lens)
 plt.hist(lens)
 plt.savefig("/home/w328li/DeepMicrobes/results/lens_hist.png")
