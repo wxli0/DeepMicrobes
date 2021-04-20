@@ -13,7 +13,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             lens.append(len(seq))
 
 print(lens)
-binwidth = 1000
+binwidth = 10000
 bins = np.arange(min(lens), max(lens) + binwidth, binwidth)
 counts, edges, plot = plt.hist(lens, bins=bins, density=True)
 for i in range(len(bins)-1):
