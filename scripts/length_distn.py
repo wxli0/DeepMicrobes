@@ -2,6 +2,7 @@ import os
 import sys 
 from Bio import SeqIO
 import matplotlib.pyplot as plt
+import numpy as np
 
 lens = []
 for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
