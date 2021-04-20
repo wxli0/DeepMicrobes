@@ -10,4 +10,4 @@ for fasta in fasta_sequences:
     lens.append(len(seq))
 
 plt.hist(lens)
-plt.savefig("~/DeepMicrobes/results/lens_hist.png")
+plt.savefig("/home/w328li/DeepMicrobes/results/lens_hist.png")
