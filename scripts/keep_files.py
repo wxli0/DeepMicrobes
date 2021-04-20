@@ -17,7 +17,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
 label_dict = {}
 label = 0
 for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned'):
-    if file.endswith('.fa') and file.startswith('label_'):
+    if file.endswith('.fa') and file.startswith('label_') and not file.endswith('_new.fa')  and not file.endswith('_trimmed.fa'):
         fasta_sequences = SeqIO.parse(open("/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned/"+file),'fasta') 
         for fasta in fasta_sequences:
             id, seq = fasta.id, str(fasta.seq)
