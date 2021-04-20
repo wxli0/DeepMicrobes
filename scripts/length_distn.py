@@ -16,6 +16,9 @@ print(lens)
 binwidth = 10000
 bins = np.arange(min(lens), max(lens) + binwidth, binwidth)
 counts, edges, plot = plt.hist(lens, bins=bins, density=True)
+plt.xlabel('length of training sequences')
+plt.ylabel('frequencies')
+plt.title('histogram of lengths of training sequencs')
 for i in range(len(bins)-1):
     if counts[i] != 0:
         print("["+str(bins[i])+","+str(bins[i+1])+ "]:", counts[i])
