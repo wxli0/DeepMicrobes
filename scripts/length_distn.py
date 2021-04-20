@@ -12,7 +12,8 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             id, seq = fasta.id, str(fasta.seq)
             lens.append(len(seq))
 
-print(lens)
+print("minimum length:", min(lens))
+print("maximum length:", max(lens))
 binwidth = 10000
 bins = np.arange(min(lens), max(lens) + binwidth, binwidth)
 counts, edges, plot = plt.hist(lens, bins=bins, density=True)
