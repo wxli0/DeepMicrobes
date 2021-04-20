@@ -3,7 +3,8 @@ import sys
 from Bio import SeqIO
 
 len_dict = {}
-
+label_dict = {}
+label = 0
 for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
     if file.startswith('label_') and file.endswith('.fa'):
         fasta_sequences = SeqIO.parse(open("/mnt/sda/DeepMicrobes-data/labeled_genome_genus/"+file),'fasta') 
@@ -13,16 +14,16 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             if frag_id in len_dict:
                 print(frag_id)
             len_dict[frag_id] = len(seq)
-
-label_dict = {}
-label = 0
-for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned'):
-    if file.endswith('.fa') and file.startswith('label_') and not file.endswith('_new.fa')  and not file.endswith('_trimmed.fa'):
-        fasta_sequences = SeqIO.parse(open("/mnt/sda/DeepMicrobes-data/labeled_genome_genus_pruned/"+file),'fasta') 
+        used = False
         for fasta in fasta_sequences:
             id, seq = fasta.id, str(fasta.seq)
+            frag_id = id.split('|')[4]
+            if len(seq) <= 50000:
+                continue
             label_dict[frag_id] = label
-        label += 1
+            used = True
+        if used:
+            label += 1
 print("end label is:", label)
 
 
