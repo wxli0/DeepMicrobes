@@ -14,7 +14,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
 
 print("minimum length:", min(lens))
 print("maximum length:", max(lens))
-binwidth = 10000
+binwidth = 5000
 bins = np.arange(0, max(lens) + binwidth, binwidth)
 counts, edges, plot = plt.hist(lens, bins=bins, density=True)
 plt.xlabel('length of training sequences')
