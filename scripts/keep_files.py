@@ -23,7 +23,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             label_dict[frag_id] = label
             used = True
         if used:
-            output_file_path = "/home/w328li/data/name2label_pruned_genus.txt"
+            output_file_path = "/home/w328li/DeepMicrobes/data/name2label_pruned_genus.txt"
             out_file= open(output_file_path, mode)
             out_file.write(file[6:-3]+'\t'+label+'\n')
             label += 1
