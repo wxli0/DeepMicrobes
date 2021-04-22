@@ -16,7 +16,7 @@ for index, row in df.iterrows():
 	category_file = prefix+".category_paired.txt"
 	prob_file = prefix+".prob_paired.txt"
 
-	os.system("DeepMicrobes.py --num_classes=115 \
+	os.system("DeepMicrobes.py --num_classes=120 \
 		--model_name=attention --encode_method=kmer \
 		--model_dir=/mnt/sda/DeepMicrobes-weights/HGR_embed_100_weights \
 		--input_tfrec="+tfrec_file + " \
