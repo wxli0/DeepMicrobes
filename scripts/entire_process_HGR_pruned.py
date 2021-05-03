@@ -30,13 +30,13 @@ for index, row in df.iterrows():
 		-i "+result_file+" \
 		-o "+profile_file+" \
 		-t 50 \
-		-l /home/w328li/DeepMicrobes/data/name2label_pruned_genus.txt")
+		-l /home/w328li/DeepMicrobes/data/name2label_genus.txt")
 	print("======= done report_profile 50 =======")
 	os.system("report_profile.sh \
 		-i "+result_file+" \
 		-o "+profile_0_file+" \
 		-t 0 \
-		-l /home/w328li/DeepMicrobes/data/name2label_pruned_genus.txt")
+		-l /home/w328li/DeepMicrobes/data/name2label_genus.txt")
 	print("======= done report_profile_0 =======")
 	print("======================= done", prefix, "=======================")
 		
