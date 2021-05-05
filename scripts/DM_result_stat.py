@@ -11,7 +11,7 @@ def read_profile(file):
 
 
 df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index_col=0)
-dir = "/mnt/sda/DeepMicrobes-data/HGR_embed_100_results/"
+dir = "/mnt/sda/DeepMicrobes-data/hgr_var_balanced_embed_100_results/"
 precision_list = []
 recall_list = []
 for profile_0 in os.listdir(dir):
