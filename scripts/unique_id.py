@@ -17,4 +17,4 @@ for file in os.listdir(dir):
         out_file.write(">"+id +"_"+str(index)+ "\n")
         out_file.write(seq+"\n")
         index += 1
-        out_file.close()
+    out_file.close()
