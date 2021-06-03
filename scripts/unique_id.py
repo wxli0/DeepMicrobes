@@ -14,7 +14,8 @@ for file in os.listdir(dir):
     counter = 0
     for fasta in fasta_sequences:
         id, seq = fasta.id, str(fasta.seq)
-        out_file.write(">"+id +"_"+str(index)+ "\n")
+        new_id = id +"_"+str(index).replace("/",'_')
+        out_file.write(">"+new_id+ "\n")
         out_file.write(seq+"\n")
         index += 1
     out_file.close()
