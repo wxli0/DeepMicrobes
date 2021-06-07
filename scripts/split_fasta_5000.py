@@ -18,7 +18,7 @@ for sub_dir in os.listdir(dir):
         i = 0
         for fasta in fasta_sequences:
             id, sequence = fasta.id, str(fasta.seq) 
-            if len(sequence) > 100000:
+            if len(sequence) > 5000:
                 out_file= open(os.path.join(dir_split, sub_dir, file_short+"_"+str(i)+".fasta"), 'w')
                 out_file.write(">"+id+"\n")
                 out_file.write(sequence+"\n")
