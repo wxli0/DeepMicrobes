@@ -18,10 +18,10 @@ for file in os.listdir(input_dir):
         visited.append(cur_species)
     label = visited.index(cur_species)
     mode = 'w'
-    fasta_sequences = SeqIO.parse(open(os.path.join(output_dir, file)),'fasta')
+    fasta_sequences = SeqIO.parse(open(os.path.join(input_dir, file)),'fasta')
     for fasta in fasta_sequences:
             id, sequence = fasta.id, str(fasta.seq) 
-            out_file= open(os.path.join(dir, file[:-3]+'_new.fa'), mode)
+            out_file= open(os.path.join(output_dir, file[:-3]+'_new.fa'), mode)
             out_file.write("> label|"+str(label)+"|"+"|".join(id.split("|", 2)[2:])+"\n")
             out_file.write(sequence+"\n")
             out_file.close()
