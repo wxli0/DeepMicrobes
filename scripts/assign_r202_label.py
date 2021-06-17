@@ -13,7 +13,7 @@ os.mkdir(output_dir)
 visited = []
 for file in os.listdir(input_dir):
     index = file[:-3]
-    cur_species = S1[index]['Species']
+    cur_species = S1.loc[index]['Species']
     if cur_species not in visited:
         visited.append(cur_species)
     label = visited.index(cur_species)
