@@ -22,7 +22,7 @@ name2label_path = '/home/w328li/DeepMicrobes/data/name2label_species_r202.txt'
 if not os.path.exists(name2label_path):
     name2label_file = open(name2label_path, mode='w')
     for v in visited:
-        name2label_file.write(v+'  '+str(visited.index(v))+'\n')
+        name2label_file.write(v+'\t'+str(visited.index(v))+'\n')
 
 if not os.path.exists(output_dir):
     os.mkdir(output_dir)
