@@ -28,17 +28,17 @@ for index, row in df.iterrows():
 		-b 8192 \
 		-l genus \
 		-p 8 \
-		-m /mnt/sda/DeepMicrobes-data/weights_genus \
+		-m /mnt/sda/DeepMicrobes-data/HGR_r202_train_weights/ \
 		-o "+prefix)
 	os.system("report_profile.sh \
 		-i "+result_file+" \
 		-o "+profile_file+" \
 		-t 50 \
-		-l /home/w328li/DeepMicrobes/data/name2label_genus.txt")
+		-l /home/w328li/DeepMicrobes/data/name2label_species_r202.txt")
 	os.system("report_profile.sh \
 		-i "+result_file+" \
 		-o "+profile_0_file+" \
 		-t 0 \
-		-l /home/w328li/DeepMicrobes/data/name2label_genus.txt")
+		-l /home/w328li/DeepMicrobes/data/name2label_species_r202.txt")
 	print("======================= done", prefix, "=======================")
 	
