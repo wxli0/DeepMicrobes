@@ -12,7 +12,7 @@ for file in os.listdir(dir):
         fasta_sequences = SeqIO.parse(open(os.path.join(dir, file)),'fasta')
         for fasta in fasta_sequences:
             id, sequence = fasta.id, str(fasta.seq) 
-            out_file= open(os.path.join(dir, file[:-3]+'_new.fa'), mode)
+            out_file= open(os.path.join(dir, index+'_new.fa'), mode)
             out_file.write("> label|"+str(label)+"|"+"|".join(id.split("|", 2)[2:])+"\n")
             out_file.write(sequence+"\n")
             out_file.close()
@@ -25,7 +25,7 @@ for file in os.listdir(dir):
         fasta_sequences = SeqIO.parse(open(os.path.join(dir, file)),'fasta')
         for fasta in fasta_sequences:
             id, sequence = fasta.id, str(fasta.seq) 
-            out_file= open(os.path.join(dir, file[:-3]+'_new.fa'), mode)
+            out_file= open(os.path.join(dir, index+'_new.fa'), mode)
             out_file.write("> label|"+str(label)+"|"+id+"\n")
             out_file.write(sequence+"\n")
             out_file.close()
