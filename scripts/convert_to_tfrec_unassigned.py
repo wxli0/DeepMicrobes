@@ -4,6 +4,9 @@ import pandas as pd
 
 df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index_col=0)
 for index, row in df.iterrows():
+    if row['Genus (reference)'] != 'Unassigned':
+        print("skip", index)
+        continue
     print("======================= start", index, "=======================")
     prefix = "even_"+index
     forward_file = prefix+"_1.fa"
