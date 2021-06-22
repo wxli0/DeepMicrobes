@@ -13,15 +13,16 @@ for forward_file in os.listdir(dir):
 		profile_0_file = prefix+".0_profile.txt"
 		category_file = prefix+".category_paired.txt"
 		prob_file = prefix+".prob_paired.txt"
-		os.system("tfrec_predict_kmer.sh \
-			-f "+dir+forward_file+" \
-			-r "+dir+reverse_file+" \
-			-t fasta \
-			-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
-			-o "+prefix+" \
-			-s 4000000 \
-			-k 12")
-		print("======= done tfrec_predict_kmer =======")
+		if not os.path.exists(tfrec_file):
+			os.system("tfrec_predict_kmer.sh \
+				-f "+dir+forward_file+" \
+				-r "+dir+reverse_file+" \
+				-t fasta \
+				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
+				-o "+prefix+" \
+				-s 4000000 \
+				-k 12")
+			print("======= done tfrec_predict_kmer =======")
 		os.system("DeepMicrobes.py --num_classes=2299 \
 			--model_name=attention --encode_method=kmer \
 			--embedding_dim=20 --model_dir=/mnt/sda/DeepMicrobes-weights/GTDB_r202_train_weights \
@@ -36,13 +37,13 @@ for forward_file in os.listdir(dir):
 			-i "+result_file+" \
 			-o "+profile_file+" \
 			-t 50 \
-			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_genus.txt")
+			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_species_r202.txt")
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
-			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_genus.txt")
+			-l /home/w328li/DeepMicrobes/data/name2label_gtdb_species_r202.txt")
 		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 		
