@@ -23,7 +23,7 @@ for forward_file in os.listdir(dir):
 				-s 4000000 \
 				-k 12")
 			print("======= done tfrec_predict_kmer =======")
-		os.system("DeepMicrobes.py --num_classes=2299 \
+		os.system("DeepMicrobes.py --num_classes=601 \
 			--model_name=attention --encode_method=kmer \
 			--embedding_dim=20 --model_dir=/mnt/sda/DeepMicrobes-weights/GTDB_r202_train_weights \
 			--input_tfrec="+tfrec_file + " \
