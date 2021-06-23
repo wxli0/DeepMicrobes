@@ -6,8 +6,7 @@ import pandas as pd
 
 paths = ['/home/w328li/BlindKameris-new/outputs-r202/MLDSP-prediction-full-path.csv',\
     '/home/w328li/BlindKameris-new/outputs-HGR-r202/HGR-prediction-full-path.csv']
-path1 = '/home/w328li/BlindKameris-new/outputs-r202/MLDSP-prediction-full-path.csv'
-res_path1 = '/mnt/sda/DeepMicrobes-data/rumen_mags'
+
 
 def readin_dict(prof_path):
     file = open(prof_path, 'r')
@@ -53,8 +52,17 @@ def calc_pr(df_path, res_path):
     incorrect = (total-correct-rejected)/total
     
     return precision, recall, incorrect
-    
+
+path1 = '/home/w328li/BlindKameris-new/outputs-r202/MLDSP-prediction-full-path.csv'
+res_path1 = '/mnt/sda/DeepMicrobes-data/rumen_mags'
 precision, recall, incorrect = calc_pr(path1, res_path1)
+print("precision is:", precision)
+print("recall is:", recall)
+print("incorrect rate is:", incorrect)
+
+path2 = '/home/w328li/BlindKameris-new/outputs-HGR-r202/HGR-prediction-full-path.csv'
+res_path2 = '/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results'
+precision, recall, incorrect = calc_pr(path2, res_path2)
 print("precision is:", precision)
 print("recall is:", recall)
 print("incorrect rate is:", incorrect)
