@@ -17,7 +17,7 @@ def readin_dict(prof_path):
     prof_dict = {}
     for line in lines:
         pair = line.split('\t')
-        prof_dict[pair[0]] = float(pair[1])
+        prof_dict[pair[0]] = int(pair[1])
     return prof_dict
 
 
@@ -45,11 +45,19 @@ def calc_pr(df_path, res_path):
                 label = df.loc[index_new]['gtdb-tk-species']
             if label in prof_0_dict:
                 correct += prof_0_dict[label]
-        print(total)
-        print(correct)
-        print(rejected)
+    print(total)
+    print(correct)
+    print(rejected)
+    precision = correct/(total-rejected)
+    recall = correct/total
+    incorrect = (total-correct-rejected)/total
     
-calc_pr(path1, res_path1)
+    return precision, recall, incorrect
+    
+precision, recall, incorrect = calc_pr(path1, res_path1)
+print("precision is:", precision)
+print("recall is:", recall)
+print("incorrect rate is:", incorrect)
 
 
 
