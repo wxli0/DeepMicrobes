@@ -17,7 +17,7 @@ def readin_dict(prof_path):
     prof_dict = {}
     for line in lines:
         pair = line.split('\t')
-        prof_dict[pair[0]] = pair[1]
+        prof_dict[pair[0]] = float(pair[1])
     return prof_dict
 
 
