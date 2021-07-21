@@ -30,7 +30,7 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     for res in os.listdir(res_path):
         prof_dict = {}
         prof_0_dict = {}
-        if res.endswith('.profile.txt'):
+        if res.endswith('.profile.txt') and res not in ignore_indices:
             prof_dict = readin_dict(os.path.join(res_path, res))
             index = res.split('.profile.txt')[0]
             prof_0_dict = readin_dict(os.path.join(res_path, index+'.0_profile.txt'))
