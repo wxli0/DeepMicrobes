@@ -1,6 +1,11 @@
+"""
+Ramdom trims test dataset files in a directory using ART simulator
+
+No command line arguments are required
+"""
+
 import os
-import sys
-import shutil
+
 
 dir = "rumen_mags"
 base_path = "/home/w328li/DeepMicrobes/"

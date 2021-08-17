@@ -1,6 +1,11 @@
+"""
+Ramdom trims training dataset files in a directory using ART simulator
+
+No command line arguments are required
+"""
+
 import os
-import sys
-import shutil
+
 
 dir = "/mnt/sda/MLDSP-samples-r202/dm_species/"
 

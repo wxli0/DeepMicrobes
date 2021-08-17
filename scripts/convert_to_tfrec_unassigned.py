@@ -1,5 +1,4 @@
 import os
-import sys
 import pandas as pd
 
 df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index_col=0)

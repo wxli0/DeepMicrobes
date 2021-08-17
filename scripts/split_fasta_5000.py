@@ -1,6 +1,15 @@
-import sys 
-import os 
+"""
+Splits file in a directiry (sys.argv[1]) containing multiple sequences into \
+    mutiple files containing one sequence. The sequences are disgarded \
+        if the length is < 5000. Prepares Task 1 (simulated/sparse) training dataset.
+
+:param sys.argv[1]: dir. Target directory
+:type sys.argv[1]: str
+"""
+
 from Bio import SeqIO
+import os 
+import sys 
 
 dir = sys.argv[1]
 dir_split = dir+"_split_pruned"

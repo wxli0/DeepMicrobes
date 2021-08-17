@@ -1,3 +1,12 @@
+"""
+In a directory (sys.argv[1]), splits _1, _2 in the same file into \
+    a forward and a reverse files
+
+Command line arguments:
+:param sys.argv[1]: dir. Directory of files to manipulate
+:type sys.argv[2]: str
+
+"""
 import os 
 import sys 
 from Bio import SeqIO

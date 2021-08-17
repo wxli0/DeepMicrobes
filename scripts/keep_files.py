@@ -1,6 +1,10 @@
+"""
+Not in use
+"""
+
 import os 
-import sys
 from Bio import SeqIO
+
 
 len_dict = {}
 label_dict = {}

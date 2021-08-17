@@ -1,4 +1,12 @@
-import sys
+"""
+Executes the entire procss of DeepMicrobes for Task 2 (GTDB/cow rumen mags). \
+	The phases are converting test dataset to tfrec (tfrec_predict_kmer.sh), \
+		  using pre-trained model to predict tfrec test dataset (DeepMicrobes.py), \
+			  reporting profiles of the testing result (report_profile.sh)
+
+No command line arguments are required.
+"""
+
 import os
 
 dir = "/mnt/sda/DeepMicrobes-data/rumen_mags/"
@@ -13,6 +21,8 @@ for forward_file in os.listdir(dir):
 		profile_0_file = prefix+".0_profile.txt"
 		category_file = prefix+".category_paired.txt"
 		prob_file = prefix+".prob_paired.txt"
+
+		# converts test dataset to tfrec
 		if not os.path.exists(tfrec_file):
 			os.system("tfrec_predict_kmer.sh \
 				-f "+dir+forward_file+" \
@@ -23,6 +33,8 @@ for forward_file in os.listdir(dir):
 				-s 4000000 \
 				-k 12")
 			print("======= done tfrec_predict_kmer =======")
+
+		# use pre-trained model to predict tfrec test dataset
 		os.system("DeepMicrobes.py --num_classes=601 \
 			--model_name=attention --encode_method=kmer \
 			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/GTDB_r202_train_weights \
@@ -33,6 +45,8 @@ for forward_file in os.listdir(dir):
 		print("======= done DeepMicrobes =======")
 		os.system("paste " + category_file + " " + prob_file + " > " + result_file)
 		os.system("rm " + category_file+ " " + prob_file)
+
+		# reports profiles of the testing result
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_file+" \

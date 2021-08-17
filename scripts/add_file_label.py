@@ -1,6 +1,15 @@
+"""
+Adds labels to trimmed label files, where labels are the species \
+    taxon that the genomes belong to
+
+Command line arguments:
+:param sys.argv[1]: dir. Directory that stores the files to add labels
+"""
+
+from Bio import SeqIO
 import os 
 import sys 
-from Bio import SeqIO
+
 
 base_path = "/home/w328li/DeepMicrobes/"
 dir = sys.argv[1]
