@@ -1,17 +1,19 @@
 """
 Assigns new numerical labels from 0 to n to (n+1) species to files in \
     '/mnt/sda/MLDSP-samples-r202/dm_species'. The new label assignment map \
-        (name -> number) is stored in '/home/w328li/DeepMicrobes/data/name2label_gtdb_species_r202.txt
+        (name -> number) is stored in '~/DeepMicrobes/data/name2label_gtdb_species_r202.txt
 
 No command line arguments are required.
 """
 
 from Bio import SeqIO
 import os 
+from os.path import expanduser
 
 label = 0
 dir = '/mnt/sda/MLDSP-samples-r202/dm_species'
-name2label_path = '/home/w328li/DeepMicrobes/data/name2label_gtdb_species_r202.txt'
+home = expanduser("~")
+name2label_path = os.path.join(home, 'DeepMicrobes/data/name2label_gtdb_species_r202.txt')
 
 for file in os.listdir(dir):
     if file.endswith('.fa') and file.startswith('label_'):

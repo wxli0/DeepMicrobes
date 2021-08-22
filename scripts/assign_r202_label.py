@@ -1,11 +1,12 @@
-import sys
 import os 
+from os.path import expanduser
 import pandas as pd
 from Bio import SeqIO
 
 input_dir = '/mnt/sda/DeepMicrobes-data/labeled_genome/'
 output_dir = '/mnt/sda/DeepMicrobes-data/labeled_genome_new_label-r202/'
-S1_path = '/home/w328li/MLDSP/samples/Table_S1_new.csv'
+home = expanduser("~")
+S1_path = os.path.join(home, 'MLDSP/samples/Table_S1_new.csv')
 
 S1 = pd.read_csv(S1_path, header=0, index_col=0)
 
@@ -18,7 +19,7 @@ for file in os.listdir(input_dir):
         visited.append(cur_species)
 
 # construct name2label_species_r202.txt
-name2label_path = '/home/w328li/DeepMicrobes/data/name2label_species_r202.txt'
+name2label_path = os.path.join(home, 'DeepMicrobes/data/name2label_species_r202.txt')
 if not os.path.exists(name2label_path):
     name2label_file = open(name2label_path, mode='w')
     for v in visited:

@@ -3,6 +3,7 @@ Not in use
 """
 
 import os 
+from os.path import expanduser
 from Bio import SeqIO
 
 
@@ -10,6 +11,7 @@ len_dict = {}
 label_dict = {}
 label = 0
 mode = 'w'
+home = expanduser("~")
 for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
     if file.startswith('label_') and file.endswith('.fa'):
         fasta_sequences = SeqIO.parse(open("/mnt/sda/DeepMicrobes-data/labeled_genome_genus/"+file),'fasta') 
@@ -27,7 +29,7 @@ for file in os.listdir('/mnt/sda/DeepMicrobes-data/labeled_genome_genus/'):
             label_dict[frag_id] = label
             used = True
         if used:
-            output_file_path = "/home/w328li/DeepMicrobes/data/name2label_pruned_genus.txt"
+            output_file_path = os.path.join(home, "DeepMicrobes/data/name2label_pruned_genus.txt")
             out_file= open(output_file_path, mode)
             out_file.write(file[6:-3]+'\t'+str(label)+'\n')
             label += 1

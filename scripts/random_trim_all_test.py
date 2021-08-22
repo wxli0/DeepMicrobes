@@ -5,10 +5,11 @@ No command line arguments are required
 """
 
 import os
+from os.path import expanduser
 
-
+home = expanduser("~")
 dir = "rumen_mags"
-base_path = "/home/w328li/DeepMicrobes/"
+base_path = os.path.join(home, "DeepMicrobes/")
 label_dir = base_path+dir+"/"
 
 # random_trim all files in label_dir, assume file ends with .fa

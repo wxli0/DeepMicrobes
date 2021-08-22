@@ -1,8 +1,11 @@
-import sys
 import os
+from os.path import expanduser
+from scripts.convert_to_tfrec_unassigned import S2_path
 import pandas as pd
+home = expanduser("~")
 
-df = pd.read_csv("/home/w328li/MLDSP/samples/Table_S2.csv", skiprows=0, header=1, index_col=0)
+S2_path = os.path.join(home, "MLDSP/samples/Table_S2.csv")
+df = pd.read_csv(S2_path, skiprows=0, header=1, index_col=0)
 for index, row in df.iterrows():
 	if row['Genus (reference)'] == 'Unassigned':
 		print("skip", index)
@@ -34,11 +37,11 @@ for index, row in df.iterrows():
 		-i "+result_file+" \
 		-o "+profile_file+" \
 		-t 50 \
-		-l /home/w328li/DeepMicrobes/data/name2label_species_r202.txt")
+		-l "+ os.path.join(home, "DeepMicrobes/data/name2label_species_r202.txt"))
 	os.system("report_profile.sh \
 		-i "+result_file+" \
 		-o "+profile_0_file+" \
 		-t 0 \
-		-l /home/w328li/DeepMicrobes/data/name2label_species_r202.txt")
+		-l " + os.path.join(home, "DeepMicrobes/data/name2label_species_r202.txt"))
 	print("======================= done", prefix, "=======================")
 	

@@ -1,14 +1,16 @@
 import sys
 import os 
+from os.path import expanduser
 import shutil
 import glob
 
+home = expanduser("~")
 dir = sys.argv[1]
 combined_dir = dir+"_combined/"
 dest_dir = dir+"_w_label_trimed/"
 label_dir = 'label_files/'
 
-base_path = "/home/w328li/DeepMicrobes/"
+base_path = os.path.join(home, "DeepMicrobes/")
 
 # remove combined_dir if exists
 if os.path.isdir(base_path+combined_dir):

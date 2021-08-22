@@ -8,10 +8,11 @@ Command line arguments:
 
 from Bio import SeqIO
 import os 
+from os.path import expanduser
 import sys 
 
-
-base_path = "/home/w328li/DeepMicrobes/"
+home = expanduser("~")
+base_path = os.path.join(home, "DeepMicrobes/")
 dir = sys.argv[1]
 input_path = base_path+dir+"/"
 output_path = base_path+dir+"_w_label/"
