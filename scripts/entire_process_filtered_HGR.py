@@ -16,10 +16,11 @@ from os.path import expanduser
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 1 (simulated/sparse)')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results/')
+	default='/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
-	raise Exception("Sorry, this file has to be run in args.result_path")
+	raise Exception("Sorry, this file has to be run in args.result_path. \
+		Default: /mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results")
 
 S2_path = os.path.join(config.base_path, "MLDSP/samples/Table_S2.csv")
 df = pd.read_csv(S2_path, skiprows=0, header=1, index_col=0)
