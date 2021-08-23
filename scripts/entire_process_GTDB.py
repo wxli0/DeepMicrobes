@@ -21,19 +21,19 @@ if os.getcwd() != args.result_path:
 		Default: /mnt/sda/DeepMicrobes-data/rumen_mags")
 
 for forward_file in os.listdir(args.result_path):
+	prefix = forward_file[:-5]
+	reverse_file = prefix+'_2.fa'
+	tfrec_file = prefix+".tfrec"
+	result_file = prefix+".result.txt"
+	profile_file = prefix+".profile.txt"
+	profile_0_file = prefix+".0_profile.txt"
+	category_file = prefix+".category_paired.txt"
+	prob_file = prefix+".prob_paired.txt"
 	if forward_file.endswith('_1.fa'):
 		if os.path.exists(profile_file) and os.path.exists(profile_0_file):
 			print("======================= skip "+forward_file+" =======================")
 			continue
-		prefix = forward_file[:-5]
 		print("======================= start", prefix, "=======================")
-		reverse_file = prefix+'_2.fa'
-		tfrec_file = prefix+".tfrec"
-		result_file = prefix+".result.txt"
-		profile_file = prefix+".profile.txt"
-		profile_0_file = prefix+".0_profile.txt"
-		category_file = prefix+".category_paired.txt"
-		prob_file = prefix+".prob_paired.txt"
 
 		# converts test dataset to tfrec
 		if not os.path.exists(tfrec_file):
