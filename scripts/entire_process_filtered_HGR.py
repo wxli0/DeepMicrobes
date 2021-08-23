@@ -33,7 +33,7 @@ for index, row in df.iterrows():
 	profile_0_file = prefix+".0_profile.txt"
 	category_file = prefix+".category_paired.txt"
 	prob_file = prefix+".prob_paired.txt"
-	if not os.path.exists(profile_0_file) or not os.path.exists(profile_file):
+	if os.path.exists(profile_0_file) and os.path.exists(profile_file):
 		print('skip', index)
 	else:
 		os.system("DeepMicrobes.py --num_classes=2299 \
