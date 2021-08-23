@@ -1,10 +1,10 @@
+import config
 import os
-from os.path import expanduser
 from scripts.convert_to_tfrec_unassigned import S2_path
 import pandas as pd
-home = expanduser("~")
 
-S2_path = os.path.join(home, "MLDSP/samples/Table_S2.csv")
+
+S2_path = os.path.join(config.MLDSP_path, "samples/Table_S2.csv")
 df = pd.read_csv(S2_path, skiprows=0, header=1, index_col=0)
 for index, row in df.iterrows():
 	if row['Genus (reference)'] == 'Unassigned':

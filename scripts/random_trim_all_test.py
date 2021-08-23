@@ -4,12 +4,12 @@ Ramdom trims test dataset files in a directory using ART simulator
 No command line arguments are required
 """
 
+import config
 import os
-from os.path import expanduser
 
-home = expanduser("~")
+
 dir = "rumen_mags"
-base_path = os.path.join(home, "DeepMicrobes/")
+base_path = config.DM_path
 label_dir = base_path+dir+"/"
 
 # random_trim all files in label_dir, assume file ends with .fa

@@ -7,24 +7,23 @@ Command line arguments:
 """
 
 from Bio import SeqIO
+import config 
 import os 
-from os.path import expanduser
 import sys 
 
-home = expanduser("~")
-base_path = os.path.join(home, "DeepMicrobes/")
+base_path = config.DM_path
 dir = sys.argv[1]
-input_path = base_path+dir+"/"
-output_path = base_path+dir+"_w_label/"
+input_path = os.path.join(base_path,dir)
+output_path = os.path.join(base_path,dir+"_w_label/")
 
 if os.path.isdir(output_path):
     os.rmdir(output_path)
 os.mkdir(output_path)
 
 for file in os.listdir(input_path):
-    fasta_sequences = SeqIO.parse(open(input_path+'/'+file),'fasta') 
+    fasta_sequences = SeqIO.parse(open(os.path.join(input_path, file)),'fasta') 
     file_name = file.split("trimed_", 1)[1]
-    output_file_path = output_path+"/"+file_name
+    output_file_path = os.path.join(output_path, file_name)
     out_file= open(output_file_path, 'w')
     counter = 0
     for fasta in fasta_sequences:

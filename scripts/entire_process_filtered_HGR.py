@@ -7,12 +7,12 @@ Executes the entire procss of DeepMicrobes for Task 1 (HGR/ERP108418). \
 No command line arguments are required.
 """
 
+import config
 import pandas as pd 
 import os
 from os.path import expanduser
 
-home = expanduser("~")
-S2_path = os.path.join(home, "MLDSP/samples/Table_S2.csv")
+S2_path = os.path.join(config.base_path, "MLDSP/samples/Table_S2.csv")
 df = pd.read_csv(S2_path, skiprows=0, header=1, index_col=0)
 for index, row in df.iterrows():
 	prefix = "even_"+index
@@ -42,13 +42,13 @@ for index, row in df.iterrows():
 			-i "+result_file+" \
 			-o "+profile_file+" \
 			-t 50 \
-			-l " + os.path.join(home, "DeepMicrobes/data/name2label_hgr_species_r202.txt"))
+			-l " + os.path.join(config.base_path, "DeepMicrobes/data/name2label_hgr_species_r202.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
-			-l " + os.path.join(home, "DeepMicrobes/data/name2label_hgr_species_r202.txt"))
+			-l " + os.path.join(config.base_path, "DeepMicrobes/data/name2label_hgr_species_r202.txt"))
 		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 			
