@@ -14,7 +14,7 @@ def lab2name(label2name):
     label2name_dict = {}
     with open(label2name) as handle:
         for line in handle:
-            line_ls = re.split('  |\t',line)
+            line_ls = re.split('  |\t',line.strip())
             print("line_ls is:", line_ls)
             label2name_dict[line_ls[1]] = line_ls[0]
     return label2name_dict
