@@ -7,13 +7,14 @@ from __future__ import print_function
 
 import argparse
 import operator
+import re
 
 
 def lab2name(label2name):
     label2name_dict = {}
     with open(label2name) as handle:
         for line in handle:
-            line_ls = line.rstrip().split()
+            line_ls = re.split('  |\t',line)
             print("line_ls is:", line_ls)
             label2name_dict[line_ls[1]] = line_ls[0]
     return label2name_dict
