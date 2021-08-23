@@ -20,8 +20,7 @@ if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
 		Default: /mnt/sda/DeepMicrobes-data/rumen_mags")
 
-dir = config.GTDB_test_path
-for forward_file in os.listdir(dir):
+for forward_file in os.listdir(args.result_path):
 	if forward_file.endswith('_1.fa'):
 		if os.path.exists(profile_file) and os.path.exists(profile_0_file):
 			print("======================= skip "+forward_file+" =======================")
