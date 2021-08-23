@@ -15,7 +15,7 @@ import os
 from os.path import expanduser
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 1 (simulated/sparse)')
-parser.add_argument('--result_path', 'path of result files', \
+parser.add_argument('--result_path', help='path of result files', \
 	default='/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results/')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
