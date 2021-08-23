@@ -5,15 +5,27 @@ Executes the entire procss of DeepMicrobes for Task 2 (GTDB/cow rumen mags). \
 			  reporting profiles of the testing result (report_profile.sh)
 
 No command line arguments are required.
+This script must be run in result_path (default: /mnt/sda/DeepMicrobes-data/rumen_mags)
 """
 
+import argparse
 import config
 import os
 
+parser = argparse.ArgumentParser(description='Execute entire process of Task 2 (real/dense)')
+parser.add_argument('--result_path', help='path of result files', \
+	default='/mnt/sda/DeepMicrobes-data/rumen_mags')
+args = parser.parse_args()
+if os.getcwd() != args.result_path:
+	raise Exception("Sorry, this file has to be run in args.result_path. \
+		Default: /mnt/sda/DeepMicrobes-data/rumen_mags")
 
 dir = config.GTDB_test_path
 for forward_file in os.listdir(dir):
 	if forward_file.endswith('_1.fa'):
+		if os.path.exists(profile_file) and os.path.exists(profile_0_file):
+			print("======================= skip "+forward_file+" =======================")
+			continue
 		prefix = forward_file[:-5]
 		print("======================= start", prefix, "=======================")
 		reverse_file = prefix+'_2.fa'
