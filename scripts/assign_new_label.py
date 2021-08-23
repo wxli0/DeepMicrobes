@@ -6,8 +6,8 @@ Assigns new numerical labels from 0 to n to (n+1) species to files in \
 No command line arguments are required.
 """
 
-import config
 from Bio import SeqIO
+import config
 import os 
 
 label = 0
