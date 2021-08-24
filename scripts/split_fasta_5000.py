@@ -17,7 +17,6 @@ os.mkdir(dir_split)
 for sub_dir in os.listdir(dir):
     os.mkdir(os.path.join(dir_split, sub_dir))
     for file in os.listdir(os.path.join(dir, sub_dir)):
-        print("file is:", file)
         file_short = file
         if file.endswith('.fa'):
             file_short = file[:-3]
