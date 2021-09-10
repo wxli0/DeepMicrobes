@@ -37,13 +37,13 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     for index, row in df.iterrows():
         label = df.loc[index]['gtdb-tk-species']
         if index not in ignore_indices and label != 's__':
-            prof_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+"_profile.txt"))
+            prof_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+".profile.txt"))
             prof_0_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+'.0_profile.txt'))
             total += sum(prof_0_dict.values())
             rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
             if label in prof_0_dict:
                 correct += prof_0_dict[label]
-                
+
     precision = 0
     if (total-rejected) != 0:
         precision = correct/(total-rejected)
