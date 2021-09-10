@@ -34,20 +34,16 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     rejected = 0
     df = pd.read_csv(df_path, index_col=0, header=0, dtype = str)
 
-    for res in os.listdir(res_path):
-        prof_dict = {}
-        prof_0_dict = {}
-        if res.endswith('.profile.txt'):
-            index = res.split('.profile.txt')[0]
-            if index+'.fasta' not in ignore_indices and index+'.fa' not in ignore_indices:
-                label = df.loc[index]['gtdb-tk-species']
-                if label != 's__':
-                    prof_dict = readin_dict(os.path.join(res_path, res))
-                    prof_0_dict = readin_dict(os.path.join(res_path, index+'.0_profile.txt'))
-                    total += sum(prof_0_dict.values())
-                    rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
-                    if label in prof_0_dict:
-                        correct += prof_0_dict[label]
+    for index, row in df.iterrows():
+        label = df.loc[index]['gtdb-tk-species']
+        if index not in ignore_indices and label != 's__':
+            prof_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+"_profile.txt"))
+            prof_0_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+'.0_profile.txt'))
+            total += sum(prof_0_dict.values())
+            rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
+            if label in prof_0_dict:
+                correct += prof_0_dict[label]
+                
     precision = 0
     if (total-rejected) != 0:
         precision = correct/(total-rejected)
