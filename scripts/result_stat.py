@@ -43,6 +43,8 @@ def calc_pr(df_path, res_path, ignore_indices = []):
             rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
             if label in prof_0_dict:
                 correct += prof_0_dict[label]
+        else:
+            print(index)
 
     precision = 0
     if (total-rejected) != 0:
@@ -50,7 +52,6 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     recall = correct/total
     incorrect = (total-correct-rejected)/total
     rejection_rate = rejected/total
-    print("total is:", total)
     
     return precision, recall, incorrect, rejection_rate
 
