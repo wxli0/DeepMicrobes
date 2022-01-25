@@ -53,7 +53,7 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     
     return classified_acc, absolute_acc, adjusted_acc, rejection_rate
 
-path2 = os.path.join(config.MT_MAG_path, 'outputs-HGR-r202/HGR-r202-prediction-full-path.csv')
+path2 = os.path.join(config.MT_MAG_path, 'outputs-HGR-r202-archive1/HGR-r202-prediction-full-path.csv')
 res_path2 = '/mnt/sda/DeepMicrobes-data/mag_reads_250bp_1w_200000_results'
 ignore_indices2 = ['even_MAG-GUT10417.fa', 'even_MAG-GUT15880.fa', 'even_MAG-GUT1743.fa', 'even_MAG-GUT21953.fa', 'even_MAG-GUT22878.fa', 'even_MAG-GUT28136.fa', 'even_MAG-GUT29051.fa', 'even_MAG-GUT29076.fa', 'even_MAG-GUT33914.fa', 'even_MAG-GUT36027.fa', 'even_MAG-GUT40857.fa', 'even_MAG-GUT41924.fa', 'even_MAG-GUT42485.fa', 'even_MAG-GUT42494.fa', 'even_MAG-GUT42584.fa', 'even_MAG-GUT43216.fa', 'even_MAG-GUT43894.fa', 'even_MAG-GUT44111.fa', 'even_MAG-GUT44851.fa', 'even_MAG-GUT45331.fa', 'even_MAG-GUT46923.fa', 'even_MAG-GUT47106.fa', 'even_MAG-GUT47179.fa', 'even_MAG-GUT4902.fa', 'even_MAG-GUT52094.fa', 'even_MAG-GUT52107.fa', 'even_MAG-GUT52138.fa', 'even_MAG-GUT53617.fa', 'even_MAG-GUT54931.fa', 'even_MAG-GUT56425.fa', 'even_MAG-GUT5727.fa', 'even_MAG-GUT58014.fa', 'even_MAG-GUT58077.fa', 'even_MAG-GUT59039.fa', 'even_MAG-GUT60365.fa', 'even_MAG-GUT61159.fa', 'even_MAG-GUT61176.fa', 'even_MAG-GUT61959.fa', 'even_MAG-GUT70200.fa', 'even_MAG-GUT7064.fa', 'even_MAG-GUT7066.fa', 'even_MAG-GUT7291.fa', 'even_MAG-GUT76426.fa', 'even_MAG-GUT77982.fa', 'even_MAG-GUT78879.fa', 'even_MAG-GUT78908.fa', 'even_MAG-GUT78923.fa', 'even_MAG-GUT81671.fa', 'even_MAG-GUT82176.fa', 'even_MAG-GUT82203.fa', 'even_MAG-GUT83501.fa', 'even_MAG-GUT83507.fa', 'even_MAG-GUT83946.fa', 'even_MAG-GUT8428.fa', 'even_MAG-GUT84696.fa', 'even_MAG-GUT84793.fa', 'even_MAG-GUT8521.fa', 'even_MAG-GUT86514.fa', 'even_MAG-GUT86868.fa', 'even_MAG-GUT87091.fa', 'even_MAG-GUT87486.fa', 'even_MAG-GUT87573.fa', 'even_MAG-GUT87828.fa', 'even_MAG-GUT88085.fa', 'even_MAG-GUT88218.fa', 'even_MAG-GUT88257.fa', 'even_MAG-GUT88679.fa', 'even_MAG-GUT88862.fa', 'even_MAG-GUT89291.fa', 'even_MAG-GUT89323.fa', 'even_MAG-GUT90190.fa', 'even_MAG-GUT90947.fa', 'even_MAG-GUT91328.fa']
 
@@ -64,7 +64,7 @@ print("absolute accuracy is:", absolute_acc)
 print("adjusted accuracy is:", adjusted_acc)
 print("rejection rate is:", rejection_rate)
 
-path1 = os.path.join(config.MT_MAG_path, 'outputs-GTDB-r202/GTDB-r202-prediction-full-path.csv')
+path1 = os.path.join(config.MT_MAG_path, 'outputs-GTDB-r202-archive1/GTDB-r202-prediction-full-path.csv')
 res_path1 = '/mnt/sda/DeepMicrobes-data/rumen_mags'
 ignore_indices1 =  ['RUG428.fasta', 'RUG635.fasta', 'RUG684.fasta', 'RUG687.fasta', 'RUG732.fasta', 'RUG752.fasta', 'RUG789.fasta', 'RUG820.fasta']
 
