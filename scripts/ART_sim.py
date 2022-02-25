@@ -5,8 +5,8 @@ import os
 
 data_path = config.DM_data_path
 # for Task 1 (sparse)
-task_folder = "HGR_species" 
-dest_folder = "HGR_species_reads"
+task_folder = "HGR_species_label" 
+dest_folder = "HGR_species_label_reads"
 
 src = os.path.join(data_path, task_folder) 
 dest = os.path.join(data_path, dest_folder) 
