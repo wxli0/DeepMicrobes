@@ -16,3 +16,5 @@ dm_*/
 pipelines/model_weights/
 HGR_pruned_weights/
 inputs/
+art_bin_MountRainier/
+artbinmountrainier2016.06.05linux64.tar
