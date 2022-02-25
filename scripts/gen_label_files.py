@@ -22,7 +22,7 @@ if not os.path.exists(os.path.join(base_path, dest)):
     os.mkdir(os.path.join(base_path, dest))
 
 # concatenate all files in subdir to _combined.fna
-for subdir in os.listdir(os.path.join(base_path+src)):
+for subdir in os.listdir(os.path.join(base_path, src)):
     with open(os.path.join(base_path, dest, subdir+"_combined.fa"), 'wb') as outfile:
         for filename in glob.glob(base_path+"/"+src+'/'+subdir+'/*.fa'):
             with open(filename, 'rb') as readfile:
