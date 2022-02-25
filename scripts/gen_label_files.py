@@ -18,28 +18,28 @@ label_dir = 'file2label/'
 data_path = config.DM_data_path
 DM_path = config.DM_path
 
-# # make dest folder
-# if not os.path.exists(os.path.join(data_path, dest)):
-#     os.mkdir(os.path.join(data_path, dest))
+# make dest folder
+if not os.path.exists(os.path.join(data_path, dest)):
+    os.mkdir(os.path.join(data_path, dest))
 
-# # concatenate all files in subdir to _combined.fna
-# for subdir in os.listdir(os.path.join(data_path, src)):
-#     with open(os.path.join(data_path, dest, subdir+"_combined.fa"), 'wb') as outfile:
-#         for filename in glob.glob(data_path+"/"+src+'/'+subdir+'/*.fa'):
-#             with open(filename, 'rb') as readfile:
-#                 shutil.copyfileobj(readfile, outfile)
+# concatenate all files in subdir to _combined.fna
+for subdir in os.listdir(os.path.join(data_path, src)):
+    with open(os.path.join(data_path, dest, subdir+"_combined.fa"), 'wb') as outfile:
+        for filename in glob.glob(data_path+"/"+src+'/'+subdir+'/*.fa'):
+            with open(filename, 'rb') as readfile:
+                shutil.copyfileobj(readfile, outfile)
 
 
 # generate label_{dir}.txt
 label_id = 0
-with open(os.path.join(DM_path,label_dir, src+".txt"), 'w') as f:
+with open(os.path.join(DM_path,label_dir, dest+".txt"), 'w') as f:
     for fna_file in os.listdir(os.path.join(data_path, dest)):
         f.write(fna_file+"\t"+str(label_id)+"\n")
         label_id += 1
 
 # generate name2label_{dir}.txt
 label_id=0
-with open(os.path.join(DM_path, "name2label", src+".txt"), "w") as f:
+with open(os.path.join(DM_path, "name2label", dest+".txt"), "w") as f:
     for fna_file in os.listdir(os.path.join(data_path, dest)):
         if fna_file.endswith('.fa'):
             cur_class = fna_file[:-3]
