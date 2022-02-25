@@ -11,33 +11,34 @@ import glob
 #   - species 2
 #       - species 2 file 1
 #       - species 2 file 2
-dir = '/mnt/sda/DeepMicrobes-data/HGR_species_folder' 
-dest = '/mnt/sda/DeepMicrobes-data/HGR_species'
+src = 'HGR_species_folder' 
+dest = 'HGR_species'
 label_dir = 'file2label/'
 
-base_path = config.DM_path
+base_path = config.DM_data_path
 
 # make dest folder
-os.mkdir(dest)
+if not os.path.exists(os.path.join(base_path, dest)):
+    os.mkdir(os.path.join(base_path, dest))
 
 # concatenate all files in subdir to _combined.fna
-for subdir in os.listdir(base_path+dir):
+for subdir in os.listdir(os.path.join(base_path+src)):
     with open(os.path.join(base_path, dest, subdir+"_combined.fa"), 'wb') as outfile:
-        for filename in glob.glob(base_path+"/"+dir+'/'+subdir+'/*.fa'):
+        for filename in glob.glob(base_path+"/"+src+'/'+subdir+'/*.fa'):
             with open(filename, 'rb') as readfile:
                 shutil.copyfileobj(readfile, outfile)
 
 
 # generate label_{dir}.txt
 label_id = 0
-with open(os.path.join(base_path,label_dir, dir+".txt"), 'w') as f:
+with open(os.path.join(base_path,label_dir, src+".txt"), 'w') as f:
     for fna_file in os.listdir(os.path.join(base_path, dest)):
         f.write(fna_file+"\t"+str(label_id)+"\n")
         label_id += 1
 
 # generate name2label_{dir}.txt
 label_id=0
-with open(os.path.join(base_path, "name2label", dir+".txt"), "w") as f:
+with open(os.path.join(base_path, "name2label", src+".txt"), "w") as f:
     for fna_file in os.listdir(os.path.join(base_path, dest)):
         if fna_file.endswith('.fa'):
             cur_class = fna_file[:-3]
