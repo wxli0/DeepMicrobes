@@ -9,22 +9,20 @@ import random
 from Bio import SeqIO
 
 
-def trim_one_seq(seq, min_trim=0, max_trim=75, ori_seq_len=150, reverse=False):
+def trim_one_seq(seq, min_trim=0, max_trim=75, ori_seq_len=150):
     # generate variable-length DNA between [L-max_trim, L-min_trim]
     trim_num = random.randint(min_trim, max_trim)
-    if reverse:
-        seq = seq[::-1]
     trimmed_seq = str(seq).rstrip()[0:(ori_seq_len-trim_num)] + '\n'
     return trimmed_seq
 
 
 def trim_one_file(raw_file, out_file, file_type='fastq',
-                  min_trim=0, max_trim=75, ori_seq_len=150, reverse=False):
+                  min_trim=0, max_trim=75, ori_seq_len=150):
     with open(out_file, 'w') as handle_out:
         with open(raw_file, 'r') as handle_raw:
             for rec in SeqIO.parse(handle_raw, file_type):
                 trimmed_seq = trim_one_seq(rec.seq, min_trim, max_trim,
-                                           ori_seq_len, reverse)
+                                           ori_seq_len)
                 seq_name = rec.id + '\n'
                 handle_out.write('>' + seq_name)
                 handle_out.write(trimmed_seq)
@@ -46,7 +44,6 @@ def main():
                         help='max # of trimmed bases')
     parser.add_argument('-l', dest='ori_seq_len', type=int, default=150,
                         help='length of raw sequences')
-    parser.add_argument('-r', dest='reverse', type=bool, default=False)
 
     args = parser.parse_args()
     raw_file = args.raw_file
@@ -55,9 +52,8 @@ def main():
     min_trim = args.min_trim
     max_trim = args.max_trim
     ori_seq_len = args.ori_seq_len
-    reverse = args.reverse
 
-    trim_one_file(raw_file, out_file, file_type, min_trim, max_trim, ori_seq_len, reverse)
+    trim_one_file(raw_file, out_file, file_type, min_trim, max_trim, ori_seq_len)
 
     return
 
