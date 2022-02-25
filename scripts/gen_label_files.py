@@ -33,14 +33,14 @@ DM_path = config.DM_path
 # generate label_{dir}.txt
 label_id = 0
 with open(os.path.join(DM_path,label_dir, src+".txt"), 'w') as f:
-    for fna_file in os.listdir(os.path.join(DM_path, dest)):
+    for fna_file in os.listdir(os.path.join(data_path, dest)):
         f.write(fna_file+"\t"+str(label_id)+"\n")
         label_id += 1
 
 # generate name2label_{dir}.txt
 label_id=0
 with open(os.path.join(DM_path, "name2label", src+".txt"), "w") as f:
-    for fna_file in os.listdir(os.path.join(DM_path, dest)):
+    for fna_file in os.listdir(os.path.join(data_path, dest)):
         if fna_file.endswith('.fa'):
             cur_class = fna_file[:-3]
         elif fna_file.endswith('.fna'):
