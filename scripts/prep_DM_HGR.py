@@ -2,8 +2,8 @@ import os
 import pandas as pd
 from shutil import copyfile
 
-gtdbtk_path = "~/DeepMicrobes/label_files/gtdbtk.bac120.summary.tsv"
-gtdbtk_res = pd.read_excel(gtdbtk_path, index_col=0, header=0, sheet_name="gtdbtk.bac120.summary")
+gtdbtk_path = "~/Desktop/gtdbtk.bac120.summary.tsv"
+gtdbtk_res = pd.read_csv(gtdbtk_path, sep='\t', header = 0)
 output_dir = "/mnt/sda/DeepMicrobes-data/HGR_species_folder"
 src = "/mnt/sda/DeepMicrobes-data/labeled_genome_original"
 
