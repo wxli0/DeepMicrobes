@@ -19,10 +19,7 @@ for fasta_file in os.listdir(src):
     print(fasta_file)
     if fasta_file.endswith('.fa'):
         genome = fasta_file[:-3]
-    # print("~/DeepMicrobes/art_bin_MountRainier/art_illumina -ss HS25  -i " \
-    #         + "'"+os.path.join(src, fasta_file)+"'" + " -p -na -l 150 -f 2 -m 400  -s 50 -o "+"'"+os.path.join(dest, genome)+"'")
-    os.system(\
-        "~/DeepMicrobes/art_bin_MountRainier/art_illumina -ss HS25  -i " \
-            + os.path.join(src, fasta_file) + " -p -na -l 150 -f 2 -m 400  -s 50 -o "+os.path.join(dest, genome))
-    # print("============= completed " + fasta_file + "=============")
+    os.system("~/DeepMicrobes/art_bin_MountRainier/art_illumina -ss HS25  -i " \
+            + "'"+os.path.join(src, fasta_file)+"'" + " -p -na -l 150 -f 2 -m 400  -s 50 -o "+"'"+os.path.join(dest, genome)+"'")
+    print("============= completed " + fasta_file + "=============")
 
