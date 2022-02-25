@@ -7,7 +7,7 @@ No command line arguments are required
 import config
 import os
 
-task = "HGR_species_reads" # for Task 1
+task = "HGR_species_label_reads" # for Task 1
 dir = os.path.join(config.DM_data_path, task)
 
 # random_trim all files in label_dir, assume file ends with .fa
