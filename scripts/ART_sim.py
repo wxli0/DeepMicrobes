@@ -14,7 +14,7 @@ dest = os.path.join(data_path, dest_folder)
 if not os.path.exists(dest):
     os.mkdir(dest)
 
-for fasta_file in src:
+for fasta_file in os.listdir(src):
     genome = None
     print(fasta_file)
     if fasta_file.endswith('.fa'):
