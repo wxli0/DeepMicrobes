@@ -17,11 +17,10 @@ for file in os.listdir(dir):
     suffix = None
     if file.endswith('.fq'):
         identifier = file[:-3]
-        suffix = ".fq"
         type = "fastq"
     input_file = os.path.join(dir, file)
     # trim from 3' and 5'
-    output_file = os.path.join(dir, identifier+"_trimmed"+suffix)
+    output_file = os.path.join(dir, identifier+"_trimmed.fa")
     os.system("random_trim.py -i " + "'"+ input_file + "'" \
         + " -o " + "'" + output_file+ "'" + " -f "+ type + " -l 150 -min 0 -max 75")
     print("done random_trim.py -i " + "'"+ input_file + "'" \
