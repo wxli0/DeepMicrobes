@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --mail-user=w328li@uwaterloo.ca
+#SBATCH --mail-type=ALL
+#SBATCH --job-name=DM
+#SBATCH -J test
+#SBATCH --ntasks=1
+#SBATCH --mem=100G
+#SBATCH -c 2
+#SBATCH --time=100:00:00
+#SBATCH --partition=rtx6000
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:4
+#SBATCH --qos=normal
+#SBATCH --export=ALL
+#SBATCH --output=DM_%x.%j.log
+
+export PATH=/pkgs/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/h/wanxinli/tools:/h/wanxinli/tools/bin:/h/wanxinli/tools/pplacer-Linux-v1.1.alpha19:/h/wanxinli/.local/bin:/h/wanxinli/DeepMicrobes:/h/wanxinli/DeepMicrobes/scripts:/h/wanxinli/DeepMicrobes/pipelines:/h/wanxinli/DeepMicrobes/bin:/h/wanxinli/tools/seqtk
+export PYTHONPATH=/scratch/hdd001/home/wanxinli/deepmicrobes
+module load cuda-10.0
+
+DeepMicrobes.py --input_tfrec=/scratch/hdd001/home/wanxinli/labeled_genome_train_species_reads_trimmed.tfrec --model_name=attention --model_dir=/h/wanxinli/DeepMicrobes/weights/labeled_genome_train_species_reads_trimmed_weights_v --num_classes=2505
