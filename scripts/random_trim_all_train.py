@@ -7,7 +7,8 @@ No command line arguments are required
 import config
 import os
 
-task = "labeled_genome_train_species_reads" # for Task 1
+# task = "labeled_genome_train_species_reads" # for Task 1 in DeepMicrobes
+# task = "HGR_species"
 dir = os.path.join(config.DM_data_path, task)
 
 # random_trim all files in label_dir, assume file ends with .fa

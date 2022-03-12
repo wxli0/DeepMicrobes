@@ -31,3 +31,9 @@ We are committed to maintain this repository to assist users and tackle errors.
 ## Citation
 
 Qiaoxing Liang, Paul W Bible, Yu Liu, Bin Zou, Lai Wei, [DeepMicrobes: taxonomic classification for metagenomics with deep learning](https://doi.org/10.1093/nargab/lqaa009), NAR Genomics and Bioinformatics, Volume 2, Issue 1, March 2020, lqaa009, https://doi.org/10.1093/nargab/lqaa009
+
+## Dataset information
+
+Original DeepMicrobes's Task 1: 2250 classes, simulated reads location: /mnt/sda/DeepMicrobes-data/labeled_genome_train_species_reads
+
+Task 1 (sparse): 2298 classes, simuated reads location: :/mnt/sda/DeepMicrobes-data/HGR_species_label_reads
