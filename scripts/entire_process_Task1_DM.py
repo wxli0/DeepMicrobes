@@ -5,7 +5,6 @@ This script must be run in /mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_split/
 """
 import config
 import os
-from scripts.convert_to_tfrec_unassigned import S2_path
 import pandas as pd
 
 
