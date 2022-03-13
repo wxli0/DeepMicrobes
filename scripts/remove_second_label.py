@@ -1,5 +1,5 @@
 """
-Removes the first label from the concatenated trimed simulated reads fasta files
+Removes the second label from the concatenated trimed simulated reads fasta files
 
 This script must be run within the folder there the concatenated file (e.g. train.fa) is in
 """
@@ -13,8 +13,7 @@ file = "/mnt/sda/DeepMicrobes-data/HGR_species_label_reads/Task1_w_old_label.fa"
 output_file = ""
 
 fasta_sequences = SeqIO.parse(open(os.path.join(file)),'fasta') 
-out_file= open(output_file, 'w')
-counter = 0
+# out_file= open(output_file, 'w')
 for fasta in fasta_sequences:
     id, seq = fasta.id, str(fasta.seq)
     seq_split = seq.split("|")
