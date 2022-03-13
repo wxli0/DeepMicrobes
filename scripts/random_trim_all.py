@@ -12,8 +12,7 @@ import os
 # task = "HGR_species_label_reads" # for Task 1 (sparse)
 
 ###### For test ########
-task = "mag_reads_150bp_1w" # for Task 1 in DeepMicrobes
-# task = "HGR_species_label_reads" # for Task 1 (sparse)
+task = "mag_reads_150bp_1w_split" # for Task 1 in DeepMicrobes
 
 dir = os.path.join(config.DM_data_path, task)
 
