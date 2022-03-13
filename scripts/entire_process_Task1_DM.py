@@ -27,9 +27,10 @@ for index, row in df.iterrows():
 		-o "+prefix+" \
 		-s 4000000 \
 		-k 12")
+	# changed batch seize from 8192 to 4096
 	os.system("predict_DeepMicrobes.sh \
 		-i "+tfrec_file+" \
-		-b 8192 \
+		-b 4096 \
 		-l genus \
 		-p 8 \
 		-m /mnt/sda/DeepMicrobes-data/weights/labeled_genome_train_species_reads_trimmed_weights_120h_cpt_1000_ddl \
@@ -38,11 +39,11 @@ for index, row in df.iterrows():
 		-i "+result_file+" \
 		-o "+profile_file+" \
 		-t 50 \
-		-l "+ os.path.join(config.DM_path, "name2label/HGR_species.txt"))
+		-l "+ os.path.join(config.DM_path, "name2label/name2label_species.txt"))
 	os.system("report_profile.sh \
 		-i "+result_file+" \
 		-o "+profile_0_file+" \
 		-t 0 \
-		-l " + os.path.join(config.DM_path, "name2label/HGR_species.txt"))
+		-l " + os.path.join(config.DM_path, "name2label/name2label_species.txt"))
 	print("======================= done", prefix, "=======================")
 	
