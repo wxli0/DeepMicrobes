@@ -100,7 +100,8 @@ if [ ! -d ${model_dir} ];then
     exit 1
 fi
 
-if [[ ! -e ${model_dir}/checkpoint ]] || [[ ! -e ${model_dir}/graph.pbtxt ]] || [[ ! -e ${model_dir}/model.ckpt-0.data-00000-of-00001 ]] || [[ ! -e ${model_dir}/model.ckpt-0.index ]] || [[ ! -e ${model_dir}/model.ckpt-0.meta ]] 
+# if [[ ! -e ${model_dir}/checkpoint ]] || [[ ! -e ${model_dir}/graph.pbtxt ]] || [[ ! -e ${model_dir}/model.ckpt-0.data-00000-of-00001 ]] || [[ ! -e ${model_dir}/model.ckpt-0.index ]] || [[ ! -e ${model_dir}/model.ckpt-0.meta ]] 
+if [[ ! -e ${model_dir}/checkpoint ]] || [[ ! -e ${model_dir}/graph.pbtxt ]]  
 then
     echo "ERROR : Missing all or part of the model weight files"
 	usage
