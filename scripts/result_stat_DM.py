@@ -4,7 +4,7 @@ import pandas as pd
 
 gt_path = os.path.join(config.MLDSP_path, "samples/Table_S2.csv")
 gt_df = pd.read_csv(gt_path, skiprows=0, header=1, index_col=0)
-thres = 0
+thres = 0.2
 
 result_dir = "/mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_split"
 total_count = 0
