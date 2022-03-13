@@ -1,10 +1,13 @@
+"""
+runs the TFRecord convertino, prediction, profiling for Task 1 in DeepMicrobes
+"""
 import config
 import os
 from scripts.convert_to_tfrec_unassigned import S2_path
 import pandas as pd
 
 
-S2_path = os.path.join(config.MT_MAG_path, "outputs-HGR-r202-archive1/HGR-r202-prediction-full-path.csv")
+S2_path = os.path.join(config.MLDSP_path, "samples/Table_S2.csv")
 df = pd.read_csv(S2_path, skiprows=0, header=1, index_col=0)
 for index, row in df.iterrows():
 	print("======================= start", index, "=======================")
@@ -28,7 +31,7 @@ for index, row in df.iterrows():
 		-b 8192 \
 		-l genus \
 		-p 8 \
-		-m /mnt/sda/DeepMicrobes-data/HGR_r202_train_weights/ \
+		-m /mnt/sda/DeepMicrobes-data/weights/labeled_genome_train_species_reads_trimmed_weights_120h_cpt_1000_ddl \
 		-o "+prefix)
 	os.system("report_profile.sh \
 		-i "+result_file+" \
