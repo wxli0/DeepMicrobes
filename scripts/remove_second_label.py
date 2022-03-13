@@ -16,9 +16,9 @@ fasta_sequences = SeqIO.parse(open(os.path.join(file)),'fasta')
 # out_file= open(output_file, 'w')
 for fasta in fasta_sequences:
     id, seq = fasta.id, str(fasta.seq)
-    seq_split = seq.split("|")
-    del seq_split[2:4]
-    new_id = "|".join(seq_split)
+    id_split = id.split("|")
+    del id_split[2:4]
+    new_id = "|".join(id_split)
     print(new_id)
 
 #     out_file.write(">"+new_id+"\n")
