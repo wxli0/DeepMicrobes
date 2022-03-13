@@ -1,11 +1,8 @@
 """
 runs the TFRecord convertino, prediction, profiling for Task 1 in DeepMicrobes
-
-This script must be run in /mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_split/
 """
 import config
 import os
-from scripts.convert_to_tfrec_unassigned import S2_path
 import pandas as pd
 
 
@@ -18,7 +15,7 @@ for index, row in df.iterrows():
 	reverse_file = prefix+"_2_trimmed.fa"
 	tfrec_file = prefix+".tfrec"
 	result_file = prefix+".result.txt"
-	profile_file = prefix+".profile.txt"
+	profile_file = prefix+".proenfile.txt"
 	profile_0_file = prefix+".0_profile.txt"
 	os.system("tfrec_predict_kmer.sh \
 		-f /mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_split/"+forward_file+" \
