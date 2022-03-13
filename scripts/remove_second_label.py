@@ -22,7 +22,7 @@ for fasta in fasta_sequences:
     new_label = int(id_split[1])
     all_labels.append(new_label)
     new_id = "|".join(id_split)
-    print(new_id)
+    # print(new_id)
     out_file.write(">"+new_id+"\n")
     out_file.write(seq+"\n")
 out_file.close()
