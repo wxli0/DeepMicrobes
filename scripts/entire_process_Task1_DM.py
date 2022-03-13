@@ -31,7 +31,6 @@ for index, row in df.iterrows():
 	os.system("predict_DeepMicrobes.sh \
 		-i "+tfrec_file+" \
 		-b 4096 \
-		-l genus \
 		-p 8 \
 		-m /mnt/sda/DeepMicrobes-data/weights/labeled_genome_train_species_reads_trimmed_weights_120h_cpt_1000_ddl \
 		-o "+prefix)
