@@ -10,17 +10,16 @@ import os
 import sys 
 
 file = "/mnt/sda/DeepMicrobes-data/HGR_species_label_reads/Task1_w_old_label.fa"
-output_file = ""
+output_file = "/mnt/sda/DeepMicrobes-data/HGR_species_label_reads/Task1.fa"
 
 fasta_sequences = SeqIO.parse(open(os.path.join(file)),'fasta') 
-# out_file= open(output_file, 'w')
+out_file= open(output_file, 'w')
 for fasta in fasta_sequences:
     id, seq = fasta.id, str(fasta.seq)
     id_split = id.split("|")
     del id_split[2:4]
     new_id = "|".join(id_split)
     print(new_id)
-
-#     out_file.write(">"+new_id+"\n")
-#     out_file.write(seq+"\n")
-# out_file.close()
+    out_file.write(">"+new_id+"\n")
+    out_file.write(seq+"\n")
+out_file.close()
