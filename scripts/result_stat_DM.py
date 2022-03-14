@@ -2,6 +2,36 @@ import config
 import os
 import pandas as pd
 
+def const_label2name(file):
+    """
+    Constructs label to name mapping from file
+    """
+    ret = {}
+    with open(file) as map_file:
+        for line in map_file:
+            line = line.strip()
+            ret[int(line.split()[0])] = line.split()[1]
+    return ret
+
+ori_label2name = const_label2name(os.path.join(config.DM_path, "name2label/name2label_species.txt"))
+new_tax = pd.read_csv(os.path.join(config.DM_path, "file2label/gtdbtk.bac120.summary.tsv"), header=1, index_col=0)
+
+def check_correct(pred, label):
+    """
+    :params pred: number from prediction, in original HGR taxonomy
+    :param label: number from ground-truth, in original HGR taxonomy
+
+    :return checks if pred == label in our GTDB updated taxomomy
+    """
+    if pred == label:
+        return True
+    
+    
+    pred_name = ori_label2name[pred]
+    label_name = ori_label2name[label]
+    return new_tax.loc[pred_name]["classification"] == new_tax[label_name]["classification"]
+
+
 def result(thres, gt_path):
     """
     Computes the constrained accuracy and absolute accuracy for threshold thres
@@ -24,8 +54,8 @@ def result(thres, gt_path):
                 conf = float(line.split()[1])
                 if conf >= thres:
                     conf_count += 1
-                    if pred == int(row['Species label']):
-                        conf_correct_count += 1
+                if check_correct(pred, int(row['Species label'])):
+                    conf_correct_count += 1
 
     return conf_correct_count/conf_count, conf_correct_count/total_count
 
