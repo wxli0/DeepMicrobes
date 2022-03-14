@@ -14,7 +14,7 @@ def const_label2name(file):
     return ret
 
 ori_label2name = const_label2name(os.path.join(config.DM_path, "name2label/name2label_species.txt"))
-new_tax = pd.read_csv(os.path.join(config.DM_path, "file2label/gtdbtk.bac120.summary.tsv"), header=1, index_col=0)
+new_tax = pd.read_csv(os.path.join(config.DM_path, "file2label/gtdbtk.bac120.summary.tsv"), sep='\t', header = 0, index_col = 0)
 
 def check_correct(pred, label):
     """
