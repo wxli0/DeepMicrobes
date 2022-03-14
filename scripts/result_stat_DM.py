@@ -10,7 +10,7 @@ def const_label2name(file):
     with open(file) as map_file:
         for line in map_file:
             line = line.strip()
-            ret[int(line.split()[0])] = line.split()[1]
+            ret[int(line.split()[1])] = line.split()[2]
     return ret
 
 ori_label2name = const_label2name(os.path.join(config.DM_path, "name2label/name2label_species.txt"))
