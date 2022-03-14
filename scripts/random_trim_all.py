@@ -8,11 +8,11 @@ import config
 import os
 
 ###### For training ########
-# task = "labeled_genome_train_species_reads" # for Task 1 in DeepMicrobes
+task = "labeled_genome_train_species_reads_author" # for Task 1 in DeepMicrobes
 # task = "HGR_species_label_reads" # for Task 1 (sparse)
 
 ###### For test ########
-task = "mag_reads_150bp_1w_split" # for Task 1 in DeepMicrobes
+# task = "mag_reads_150bp_1w_split" # for Task 1 in DeepMicrobes
 
 dir = os.path.join(config.DM_data_path, task)
 
