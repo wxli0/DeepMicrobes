@@ -8,7 +8,7 @@ def result(thres, gt_path):
     The ground-truth information is in the csv in gt_path
     """
     gt_df = pd.read_csv(gt_path, skiprows=0, header=1, index_col=0)
-    result_dir = "/mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_split"
+    result_dir = "/mnt/sda/DeepMicrobes-data/mag_reads_150bp_1w_provided_split"
     total_count = 0
     conf_count = 0
     conf_correct_count = 0
