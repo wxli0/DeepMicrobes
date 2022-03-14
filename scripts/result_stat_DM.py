@@ -56,7 +56,7 @@ def result(thres, gt_path, ignore_indices = []):
                 conf = float(line.split()[1])
                 if conf >= thres:
                     conf_count += 1
-                    if pred == int(row['Species label']):
+                    if check_correct(pred,int(row['Species label'])):
                         conf_correct_count += 1
 
     return conf_correct_count/conf_count, conf_correct_count/total_count
