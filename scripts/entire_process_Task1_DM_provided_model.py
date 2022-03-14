@@ -30,11 +30,12 @@ for index, row in df.iterrows():
 				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
 				-o "+prefix+" \
 				-s 4000000 \
-				-k 12")
+			-k 12")
 	# changed batch seize from 8192 to 4096
 	os.system("predict_DeepMicrobes.sh \
 		-i "+tfrec_file+" \
 		-b 4096 \
+		-l species \
 		-p 8 \
 		-m /mnt/sda/DeepMicrobes-data/weights/weight_species \
 		-o "+prefix)
