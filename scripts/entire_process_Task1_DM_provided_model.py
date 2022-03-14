@@ -37,7 +37,7 @@ for index, row in df.iterrows():
 		-b 4096 \
 		-l species \
 		-p 8 \
-		-m /mnt/sda/DeepMicrobes-data/weights/weight_species \
+		-m /mnt/sda/DeepMicrobes-data/weights/weights_species \
 		-o "+prefix)
 	os.system("report_profile.sh \
 		-i "+result_file+" \
