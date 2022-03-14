@@ -44,6 +44,7 @@ def result(thres, gt_path, ignore_indices = []):
     conf_correct_count = 0
 
     for index, row in gt_df.iterrows():
+        print(index)
         res_file_name = "even_"+index+".result.txt"
         if not os.path.exists(os.path.join(result_dir, res_file_name)): # delete this line when entire_process_Task1_DM completes
             continue
