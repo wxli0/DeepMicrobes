@@ -29,10 +29,10 @@ def check_correct(pred, label):
     
     pred_name = ori_label2name[pred]
     label_name = ori_label2name[label]
-    return new_tax.loc["label_"+pred_name]["classification"] == new_tax["label_"+label_name]["classification"]
+    return new_tax.loc[pred_name]["classification"] == new_tax.loc[label_name]["classification"]
 
 
-def result(thres, gt_path, ignore_indices):
+def result(thres, gt_path, ignore_indices = []):
     """
     Computes the constrained accuracy and absolute accuracy for threshold thres
     The ground-truth information is in the csv in gt_path
