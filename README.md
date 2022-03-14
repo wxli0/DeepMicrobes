@@ -34,6 +34,6 @@ Qiaoxing Liang, Paul W Bible, Yu Liu, Bin Zou, Lai Wei, [DeepMicrobes: taxonomic
 
 ## Dataset information
 
-Original DeepMicrobes's Task 1: 2250 classes, simulated reads location: /mnt/sda/DeepMicrobes-data/labeled_genome_train_species_reads
+Original DeepMicrobes's Task 1: 2505 classes, simulated reads location: /mnt/sda/DeepMicrobes-data/labeled_genome_train_species_reads
 
 Task 1 (sparse): 2298 classes, simuated reads location: :/mnt/sda/DeepMicrobes-data/HGR_species_label_reads
