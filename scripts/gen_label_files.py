@@ -35,10 +35,12 @@ if not os.path.exists(os.path.join(data_path, dest)):
 # concatenate all files in subdir to _combined.fna
 for subdir in os.listdir(os.path.join(data_path, src)):
     with open(os.path.join(data_path, dest, subdir+"_combined.fa"), 'wb') as outfile:
-        for filename in glob.glob(data_path+"/"+src+'/'+subdir+'/*.fa'):
+        for filename in \
+            (glob.glob(data_path+"/"+src+'/'+subdir+'/*.fa')+ \
+                glob.glob(data_path+"/"+src+'/'+subdir+'/*.fna') + \
+                    glob.glob(data_path+"/"+src+'/'+subdir+'/*.fasta')):
             with open(filename, 'rb') as readfile:
                 shutil.copyfileobj(readfile, outfile)
-
 
 # generate label_{dir}.txt
 label_id = 0
