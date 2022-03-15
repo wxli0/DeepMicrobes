@@ -7,14 +7,18 @@ No command line arguments are required
 import config
 import os
 
-###### For training ########
-task = "labeled_genome_train_species_reads_author" # for Task 1 in DeepMicrobes
-# task = "HGR_species_label_reads" # for Task 1 (sparse)
+###### For Task 1 ########
+task = "labeled_genome_train_species_reads_author" # for Task 1 read simulation provided by the author (training)
+# task = "HGR_species_label_reads" # for Task 1 (sparse) (training)
+# task = "mag_reads_150bp_1w_split" # for Task 1  (testing)
 
-###### For test ########
-# task = "mag_reads_150bp_1w_split" # for Task 1 in DeepMicrobes
+base_path = config.DM_data_path
 
-dir = os.path.join(config.DM_data_path, task)
+###### For Task 2 ########
+task = "GTDB_subset_representative_reads" # for Task 2 (dense) (training)
+
+
+dir = os.path.join(base_path, task)
 
 # random_trim all files in label_dir, assume file ends with .fa
 for file in os.listdir(dir):
