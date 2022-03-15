@@ -18,7 +18,7 @@ def genome_size(data_path):
         genome_size += len(sequence)
     return genome_size
 
-file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_subset_representative"
+file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_subset_representative_label"
 sim_num = 10000
 sim_len = 150
 
