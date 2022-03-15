@@ -22,7 +22,6 @@ file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_subset_representative"
 sim_num = 10000
 sim_len = 150
 for file in os.listdir(file_folder):
-    print("file is:", file)
     cur_genome_size = genome_size(os.path.join(file_folder, file))
     coverage = sim_num*2*sim_len/cur_genome_size
     id_wout_label = file[6:-2] # file starts with label_, ends with fa
