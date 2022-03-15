@@ -25,10 +25,10 @@ for file in os.listdir(file_folder):
     print("file is:", file)
     cur_genome_size = genome_size(os.path.join(file_folder, file))
     coverage = sim_num*2*sim_len/cur_genome_size
-    id_wout_label = file[6:-3] # file starts with label_, ends with fna
+    id_wout_label = file[6:-2] # file starts with label_, ends with fa
     with open('auto_art_Task2.sh', 'a') as the_file:
         the_file.write(\
             "art_illumina --noALN -ss HS25 -i " \
                 + file + " -p -o art_" + id_wout_label \
-                    + " -l 150 -f " + coverage + " -m 200 -s 10 -rs 11\n")
+                    + " -l 150 -f " + float(coverage) + " -m 200 -s 10 -rs 11\n")
 
