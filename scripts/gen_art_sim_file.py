@@ -30,5 +30,5 @@ for file in os.listdir(file_folder):
         the_file.write(\
             "art_illumina --noALN -ss HS25 -i " \
                 + file + " -p -o art_" + id_wout_label \
-                    + " -l 150 -f " + float(coverage) + " -m 200 -s 10 -rs 11\n")
+                    + " -l 150 -f " + str(coverage) + " -m 200 -s 10 -rs 11\n")
 
