@@ -5,7 +5,6 @@ Example bash command for ART simulation: art_illumina --noALN -ss HS25 -i label_
 
 from Bio import SeqIO
 import os
-gen
 
 def genome_size(data_path):
     """
