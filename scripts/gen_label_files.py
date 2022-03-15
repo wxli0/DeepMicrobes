@@ -11,9 +11,17 @@ import glob
 #   - species 2
 #       - species 2 file 1
 #       - species 2 file 2
-src = 'HGR_species_folder' 
-dest = 'HGR_species'
+
+# # for Task 1 provided
+# src = 'HGR_species_folder' 
+# dest = 'HGR_species'
+# label_dir = 'file2label/'
+
+# for Task 2
+src = 'GTDB_subset_representative_folder' 
+dest = 'GTDB_subset_representative'
 label_dir = 'file2label/'
+name_dir = 'name2label/'
 
 data_path = config.DM_data_path
 DM_path = config.DM_path
