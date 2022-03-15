@@ -12,11 +12,12 @@ task = "labeled_genome_train_species_reads_author" # for Task 1 read simulation 
 # task = "HGR_species_label_reads" # for Task 1 (sparse) (training)
 # task = "mag_reads_150bp_1w_split" # for Task 1  (testing)
 
-base_path = config.DM_data_path
+# base_path = config.DM_data_path
 
 ###### For Task 2 ########
 task = "GTDB_subset_representative_reads" # for Task 2 (dense) (training)
 
+base_path = config.MLDSP_data_path
 
 dir = os.path.join(base_path, task)
 
