@@ -34,7 +34,7 @@ if not os.path.exists(os.path.join(data_path, dest)):
 
 # concatenate all files in subdir to _combined.fna
 for subdir in os.listdir(os.path.join(data_path, src)):
-    if len(os.listdir(os.path.join(data_path, src, subdir))) != 0:
+    if len(os.listdir(os.path.join(data_path, src, subdir))) != 0: # the folder is not empty
         with open(os.path.join(data_path, dest, "label_"+subdir+".fa"), 'wb') as outfile:
             for filename in \
                 (glob.glob(data_path+"/"+src+'/'+subdir+'/*.fa')+ \

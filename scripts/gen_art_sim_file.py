@@ -21,13 +21,16 @@ def genome_size(data_path):
 file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_subset_representative"
 sim_num = 10000
 sim_len = 150
+
+if os.path.exists('auto_art_Task2.sh'):
+    os.remove('auto_art_Task2.sh')
 for file in os.listdir(file_folder):
     cur_genome_size = genome_size(os.path.join(file_folder, file))
     coverage = sim_num*2*sim_len/cur_genome_size
     id_wout_label = file[6:-2] # file starts with label_, ends with fa
     with open('auto_art_Task2.sh', 'a') as the_file:
         the_file.write(\
-            "art_illumina --noALN -ss HS25 -i " \
-                + file + " -p -o art_" + id_wout_label \
-                    + " -l 150 -f " + str(coverage) + " -m 200 -s 10 -rs 11\n")
+            "art_illumina --noALN -ss HS25 -i '" \
+                + file + "' -p -o 'art_" + id_wout_label \
+                    + "' -l 150 -f " + str(coverage) + " -m 200 -s 10 -rs 11\n")
 
