@@ -8,7 +8,7 @@ import config
 import os
 
 ###### For Task 1 ########
-task = "labeled_genome_train_species_reads_author" # for Task 1 read simulation provided by the author (training)
+# task = "labeled_genome_train_species_reads_author" # for Task 1 read simulation provided by the author (training)
 # task = "HGR_species_label_reads" # for Task 1 (sparse) (training)
 # task = "mag_reads_150bp_1w_split" # for Task 1  (testing)
 
