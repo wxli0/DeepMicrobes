@@ -16,14 +16,16 @@ import glob
 # src = 'HGR_species_folder' 
 # dest = 'HGR_species'
 # label_dir = 'file2label/'
+# data_path = config.DM_data_path
 
 # for Task 2
 src = 'GTDB_subset_representative_folder' 
 dest = 'GTDB_subset_representative'
 label_dir = 'file2label/'
 name_dir = 'name2label/'
+data_path = config.MLDSP_data_path
 
-data_path = config.DM_data_path
+
 DM_path = config.DM_path
 
 # make dest folder

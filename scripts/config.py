@@ -18,3 +18,4 @@ DM_path = os.path.join(base_path, "DeepMicrobes")
 MT_MAG_path = os.path.join(base_path, "MT-MAG")
 dm_specices_path = '/mnt/sda/MLDSP-samples-r202/dm_species'
 DM_data_path = '/mnt/sda/DeepMicrobes-data'
+MLDSP_data_path = '/mnt/sda/MLDSP-samples-r202'
