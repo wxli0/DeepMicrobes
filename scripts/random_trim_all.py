@@ -15,7 +15,7 @@ import os
 # base_path = config.DM_data_path
 
 ###### For Task 2 ########
-task = "GTDB_subset_representative_reads" # for Task 2 (dense) (training)
+task = "GTDB_subset_representative_label_reads" # for Task 2 (dense) (training)
 
 base_path = config.MLDSP_data_path
 
