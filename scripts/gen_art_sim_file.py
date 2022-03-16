@@ -18,8 +18,8 @@ def genome_size(data_path):
         genome_size += len(sequence)
     return genome_size
 
-file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_subset_representative_label"
-sim_num = 10000
+file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
+sim_num = 1000
 sim_len = 150
 
 if os.path.exists('auto_art_Task2.sh'):
