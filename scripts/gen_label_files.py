@@ -26,11 +26,11 @@ DM_path = config.DM_path
 
 ###############################
 
-# for Task 2 with 3355 classes
-src = 'GTDB_subset_representative_folder' 
-dest = 'GTDB_subset_representative'
+# # for Task 2 with 3355 classes
+# src = 'GTDB_subset_representative_folder' 
+# dest = 'GTDB_subset_representative'
 
-# for Task 2 with 602 classes
+# for Task 2 with 601 classes
 src = 'GTDB_small_representative_folder' 
 dest = 'GTDB_small_representative'
 

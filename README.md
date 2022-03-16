@@ -39,3 +39,5 @@ Original DeepMicrobes's Task 1: 2505 classes, simulated reads location: /mnt/sda
 Task 1 (sparse): 2298 classes, simuated reads location: :/mnt/sda/DeepMicrobes-data/HGR_species_label_reads
 
 Task 2 (dense): 3355 classes, simulated reads location: /mnt/sda/MLDSP-samples-r202/GTDB_subset_representative_reads
+
+Task 2 (dense) with a smaller dataset: 601 classes, simulated reads locatoin /mnt/sda/MLDSP-samples-r202/GTDB_small_representative_reads
