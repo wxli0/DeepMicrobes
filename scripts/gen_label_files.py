@@ -36,6 +36,12 @@ dest = 'GTDB_small_representative'
 
 data_path = config.MLDSP_data_path
 
+# for Task 3 with 39 classes
+src = 'Task3_g__Methanobrevibacter_A_folder' 
+dest = 'Task3_g__Methanobrevibacter_A'
+
+data_path = config.MLDSP_data_path
+
 ###############################
 
 # make dest folder
