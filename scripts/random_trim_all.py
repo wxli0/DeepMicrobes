@@ -16,7 +16,9 @@ import os
 
 ###### For Task 2 ########
 # task = "GTDB_subset_representative_label_reads" # for Task 2 (dense) (training) with 3355 classes
-task = "GTDB_small_representative_label_reads" # for Task 2 (dense) (training) with 601 classes
+# task = "GTDB_small_representative_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 11
+task = "GTDB_small_representative_1_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 1
+
 
 
 base_path = config.MLDSP_data_path
