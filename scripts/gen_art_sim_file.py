@@ -9,17 +9,17 @@ Example:
     python3 ~/DeepMicrobes/scripts/gen_art_sim_file.py --seed=1
 """
 
-# # Task 2
-# file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
-# out_prefix = "auto_art_Task2_small"
+# Task 2
+file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
+out_prefix = "auto_art_Task2_small"
 
 # # Task 3 (training)
 # file_folder = "/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label"
 # out_prefix = "auto_art_Task3"
 
-# Task 3 (test)
-file_folder = "/mnt/sda/DeepMicrobes-data/rumen_mags_Task3"
-out_prefix = "auto_art_Task3_test"
+# # Task 3 (test)
+# file_folder = "/mnt/sda/DeepMicrobes-data/rumen_mags_Task3"
+# out_prefix = "auto_art_Task3_test"
 
 import argparse
 from Bio import SeqIO
