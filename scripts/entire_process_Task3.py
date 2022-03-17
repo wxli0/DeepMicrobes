@@ -35,8 +35,8 @@ for forward_file in os.listdir(args.result_path):
 		# converts test dataset to tfrec
 		if not os.path.exists(tfrec_file): # if tfrec file has not been created
 			os.system("tfrec_predict_kmer.sh \
-				-f "+dir+forward_file+" \
-				-r "+dir+reverse_file+" \
+				-f "+forward_file+" \
+				-r "+reverse_file+" \
 				-t fasta \
 				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
 				-o "+prefix+" \
