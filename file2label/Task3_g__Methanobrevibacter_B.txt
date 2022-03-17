@@ -1,0 +1,4 @@
+s__Methanobrevibacter_B boviskoreani.fa	0
+s__Methanobrevibacter_B sp900314605.fa	1
+s__Methanobrevibacter_B sp002208625.fa	2
+s__Methanobrevibacter_B wolinii.fa	3
