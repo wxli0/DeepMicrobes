@@ -36,7 +36,7 @@ DM_path = config.DM_path
 
 # data_path = config.MLDSP_data_path
 
-# for Task 3 with 39 classes
+# for Task 3 with 4 classes
 src = 'Task3_g__Methanobrevibacter_B_folder' 
 dest = 'Task3_g__Methanobrevibacter_B'
 

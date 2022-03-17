@@ -14,7 +14,7 @@ Example:
 # out_prefix = "auto_art_Task2_small"
 
 # Task 3
-file_folder = "/mnt/sda/MLDSP-samples-r202/Task3_g__Methanobrevibacter_B_label"
+file_folder = "/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label"
 out_prefix = "auto_art_Task3"
 
 import argparse
