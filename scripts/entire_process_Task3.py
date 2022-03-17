@@ -14,11 +14,11 @@ import os
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 3')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/DeepMicrobes-data/rumen_mags_Task3_reads')
+	default='/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
-		Default: /mnt/sda/DeepMicrobes-data/rumen_mags_Task3")
+		Default: /mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads")
 
 for forward_file in os.listdir(args.result_path):
 	prefix = forward_file[:-13]
