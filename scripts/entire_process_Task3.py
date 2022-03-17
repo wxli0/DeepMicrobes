@@ -35,11 +35,11 @@ for forward_file in os.listdir(args.result_path):
 		# converts test dataset to tfrec
 		if not os.path.exists(tfrec_file): # if tfrec file has not been created
 			os.system("tfrec_predict_kmer.sh \
-				-f "+forward_file+" \
-				-r "+reverse_file+" \
+				-f '"+forward_file+"' \
+				-r '"+reverse_file+"' \
 				-t fasta \
 				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
-				-o "+prefix+" \
+				-o '"+prefix+"' \
 				-s 4000000 \
 				-k 12")
 			print("======= done tfrec_predict_kmer =======")
@@ -48,24 +48,24 @@ for forward_file in os.listdir(args.result_path):
 		os.system("DeepMicrobes.py --num_classes=4 \
 			--model_name=attention --encode_method=kmer \
 			--embedding_dim=10 --model_dir=/mnt/sda/DeepMicrobes-weights/Task3_weights \
-			--input_tfrec="+tfrec_file + " \
+			--input_tfrec='"+tfrec_file + "' \
 			--vocab_size=8390658 --cpus=1 \
-			--translate=False --pred_out=" + prefix + " \
+			--translate=False --pred_out='" + prefix + "' \
 			--running_mode=predict_paired_class")
 		print("======= done DeepMicrobes =======")
-		os.system("paste " + category_file + " " + prob_file + " > " + result_file)
-		os.system("rm " + category_file+ " " + prob_file)
+		os.system("paste '" + category_file + "' '" + prob_file + "' > '" + result_file + "'")
+		os.system("rm '" + category_file+ "' '" + prob_file + "'")
 
 		# reports profiles of the testing result
 		os.system("report_profile.sh \
-			-i "+result_file+" \
-			-o "+profile_file+" \
+			-i '"+result_file+"' \
+			-o '"+profile_file+"' \
 			-t 50 \
 			-l "+ os.path.join(config.DM_path, "name2label/Task3_g__Methanobrevibacter_B.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
-			-i "+result_file+" \
-			-o "+profile_0_file+" \
+			-i '"+result_file+"' \
+			-o '"+profile_0_file+"' \
 			-t 0 \
 			-l " +  os.path.join(config.DM_path, "name2label/Task3_g__Methanobrevibacter_B.txt"))
 		print("======= done report_profile_0 =======")
