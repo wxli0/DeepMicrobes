@@ -22,7 +22,7 @@ base_path = config.MLDSP_data_path
 
 
 ###### For Task 3 ########
-base_path = config.DM_data_path
+# base_path = config.DM_data_path
 
 # training
 # task = "Task3_g__Methanobrevibacter_B_label_reads_seed_1" # for Task 2 (dense) (training) with 601 classes with seed 1
