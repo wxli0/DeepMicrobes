@@ -30,17 +30,17 @@ DM_path = config.DM_path
 # src = 'GTDB_subset_representative_folder' 
 # dest = 'GTDB_subset_representative'
 
-# for Task 2 with 601 classes
-src = 'GTDB_small_representative_folder' 
-dest = 'GTDB_small_representative'
+# # for Task 2 with 601 classes
+# src = 'GTDB_small_representative_folder' 
+# dest = 'GTDB_small_representative'
 
-data_path = config.MLDSP_data_path
+# data_path = config.MLDSP_data_path
 
 # for Task 3 with 39 classes
-src = 'Task3_g__Methanobrevibacter_A_folder' 
-dest = 'Task3_g__Methanobrevibacter_A'
+src = 'Task3_g__Methanobrevibacter_B_folder' 
+dest = 'Task3_g__Methanobrevibacter_B'
 
-data_path = config.MLDSP_data_path
+data_path = config.DM_data_path
 
 ###############################
 
