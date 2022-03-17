@@ -62,7 +62,7 @@ do
 done
 
 
-if [[ -z "${forward}" ]] || [[ -z "${reverse}" ]] || [[ -z ${vocab} ]] || [[ -z "${output_name}" ]]
+if [[ -z ${forward} ]] || [[ -z ${reverse} ]] || [[ -z ${vocab} ]] || [[ -z ${output_name} ]]
 then
 	echo "ERROR : Please supply required arguments"
 	usage
@@ -111,13 +111,13 @@ else
 fi
 
 
-if [ ! -e "${forward}" ]; then
+if [ ! -e ${forward} ]; then
     echo "ERROR : Missing forward reads (R1)!"
 	usage
     exit 1
 fi
 
-if [ ! -e "${reverse}" ]; then
+if [ ! -e ${reverse} ]; then
     echo "ERROR : Missing reverse reads (R2)!"
 	usage
     exit 1
@@ -135,32 +135,32 @@ if [ ! -x "$(command -v seq2tfrec_kmer.py)" ]; then
 fi
 
 
-echo "Starting converting "${forward}" and "${reverse}" to TFRecord (mode=prediction), output will be saved in "${output_name}".tfrec"
+echo "Starting converting ${forward} and ${reverse} to TFRecord (mode=prediction), output will be saved in ${output_name}.tfrec"
 echo "Parameters: kmer=${kmer}, vocab_file=${vocab}, split_size=${split_seq}, sequence_type=${seq_type}"
 
 echo "======================================"
 echo "1. Interleaving R1 and R2..."
 
-seqtk seq -r "${forward}" > "${forward}".rc
-seqtk seq -r "${reverse}" > "${reverse}".rc
+seqtk seq -r ${forward} > ${forward}.rc
+seqtk seq -r ${reverse} > ${reverse}.rc
 
-seqtk mergepe "${forward}" "${reverse}" > tmp_fs_"${output_name}".${seq_type}
-seqtk mergepe "${forward}".rc "${reverse}".rc > tmp_rs_"${output_name}".${seq_type}
-seqtk mergepe tmp_fs_"${output_name}".${seq_type} tmp_rs_"${output_name}".${seq_type} > "${output_name}".merged.${seq_type} 
+seqtk mergepe ${forward} ${reverse} > tmp_fs_${output_name}.${seq_type}
+seqtk mergepe ${forward}.rc ${reverse}.rc > tmp_rs_${output_name}.${seq_type}
+seqtk mergepe tmp_fs_${output_name}.${seq_type} tmp_rs_${output_name}.${seq_type} > ${output_name}.merged.${seq_type} 
 
-rm "${forward}".rc "${reverse}".rc
-rm tmp_fs_"${output_name}".${seq_type} tmp_rs_"${output_name}".${seq_type}
+rm ${forward}.rc ${reverse}.rc
+rm tmp_fs_${output_name}.${seq_type} tmp_rs_${output_name}.${seq_type}
 echo " "
 
 echo "======================================"
 echo "2. Splitting the merged file to ${split_seq} sequences per file..."
 
-if [ -d tmp_tfrec_"${output_name}" ]; then rm -rf tmp_tfrec_"${output_name}"; fi
-mkdir tmp_tfrec_"${output_name}"
-cd tmp_tfrec_"${output_name}"
+if [ -d tmp_tfrec_${output_name} ]; then rm -rf tmp_tfrec_${output_name}; fi
+mkdir tmp_tfrec_${output_name}
+cd tmp_tfrec_${output_name}
 
-split -d -l ${line} ../"${output_name}".merged.${seq_type} subset_"${output_name}"_
-rm ../"${output_name}".merged.${seq_type}
+split -d -l ${line} ../${output_name}.merged.${seq_type} subset_${output_name}_
+rm ../${output_name}.merged.${seq_type}
 echo " "
 
 echo "======================================"
@@ -171,22 +171,18 @@ cat tmp_${seq_type}_list | parallel seq2tfrec_kmer.py \
 	--input_seq={} --output_tfrec={}.${kmer}mer.tfrec \
 	--vocab=${vocab} --kmer=${kmer} \
 	--seq_type=${seq_type}
-
-echo "remove seq"
 	
 for seq in $(cat tmp_${seq_type}_list)
 do
 rm $seq
 done
 
-echo "remove tmp"
 rm tmp_${seq_type}_list
 
-cat subset*.tfrec > ../"${output_name}".tfrec
+cat subset*.tfrec > ../${output_name}.tfrec
 
 rm subset*.tfrec
 cd ..
-rmdir tmp_tfrec_"${output_name}"
+rmdir tmp_tfrec_${output_name}
 
 echo "Finished."
-
