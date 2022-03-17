@@ -22,7 +22,7 @@ import os
 
 
 ###### For Task 3 ########
-task = "Task3_g__Methanobrevibacter_B_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 1
+task = "Task3_g__Methanobrevibacter_B_label_reads_seed_1" # for Task 2 (dense) (training) with 601 classes with seed 1
 base_path = config.DM_data_path
 
 
