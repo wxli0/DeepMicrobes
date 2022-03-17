@@ -14,7 +14,7 @@ import os
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 3')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/DeepMicrobes-data/rumen_mags_Task3')
+	default='/mnt/sda/DeepMicrobes-data/rumen_mags_Task3_reads')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
