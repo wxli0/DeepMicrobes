@@ -17,8 +17,8 @@ import os
 ###### For Task 2 ########
 # task = "GTDB_subset_representative_label_reads" # for Task 2 (dense) (training) with 3355 classes
 # task = "GTDB_small_representative_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 11
-# task = "GTDB_small_representative_1_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 1
-# base_path = config.MLDSP_data_path
+task = "GTDB_small_representative_2_label_reads" # for Task 2 (dense) (training) with 601 classes with seed 1
+base_path = config.MLDSP_data_path
 
 
 ###### For Task 3 ########
@@ -27,8 +27,8 @@ base_path = config.DM_data_path
 # training
 # task = "Task3_g__Methanobrevibacter_B_label_reads_seed_1" # for Task 2 (dense) (training) with 601 classes with seed 1
 
-# testing 
-task = "rumen_mags_Task3_reads" # for Task 2 (dense) 
+# # testing 
+# task = "rumen_mags_Task3_reads" # for Task 2 (dense) 
 
 dir = os.path.join(base_path, task)
 
