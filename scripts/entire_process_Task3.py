@@ -61,13 +61,13 @@ for forward_file in os.listdir(args.result_path):
 			-i "+result_file+" \
 			-o "+profile_file+" \
 			-t 50 \
-			-l "+ os.path.join(config.DM_path, "data/name2label_gtdb_species_r202.txt"))
+			-l "+ os.path.join(config.DM_path, "name2label/Task3_g__Methanobrevibacter_B.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
-			-l " +  os.path.join(config.DM_path, "data/name2label_gtdb_species_r202.txt"))
+			-l " +  os.path.join(config.DM_path, "name2label/Task3_g__Methanobrevibacter_B.txt"))
 		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 		
