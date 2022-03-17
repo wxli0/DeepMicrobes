@@ -21,15 +21,15 @@ if os.getcwd() != args.result_path:
 		Default: /mnt/sda/DeepMicrobes-data/rumen_mags_Task3")
 
 for forward_file in os.listdir(args.result_path):
-	prefix = forward_file[:-5]
-	reverse_file = prefix+'_2.fa'
+	prefix = forward_file[:-13]
+	reverse_file = prefix+'.2_trimmed.fa'
 	tfrec_file = prefix+".tfrec"
 	result_file = prefix+".result.txt"
 	profile_file = prefix+".profile.txt"
 	profile_0_file = prefix+".0_profile.txt"
 	category_file = prefix+".category_paired.txt"
 	prob_file = prefix+".prob_paired.txt"
-	if forward_file.endswith('_1.fa'):
+	if forward_file.endswith('.1_trimmed.fa'):
 		print("======================= start", prefix, "=======================")
 
 		# converts test dataset to tfrec
