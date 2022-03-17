@@ -9,12 +9,13 @@ Example:
     python3 ~/DeepMicrobes/scripts/gen_art_sim_file.py --seed=1
 """
 
-# git
+# # Task 2
+# file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
+# out_prefix = "auto_art_Task2_small"
 
-# Task 2
-file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
-out_prefix = "auto_art_Task2_small"
-
+# Task 3
+file_folder = "/mnt/sda/MLDSP-samples-r202/Task3_g__Methanobrevibacter_A_label"
+out_prefix = "auto_art_Task3"
 
 import argparse
 from Bio import SeqIO
@@ -37,12 +38,12 @@ def genome_size(data_path):
         genome_size += len(sequence)
     return genome_size
 
-sim_num = 1000
+sim_num = 10000
 sim_len = 150
 
 out_file = out_prefix+"_"+str(seed)+".sh"
-if os.path.exists('auto_art_Task2.sh'):
-    os.remove('auto_art_Task2.sh')
+if os.path.exists(out_prefix+'.sh'):
+    os.remove(out_prefix+'.sh')
 for file in os.listdir(file_folder):
     cur_genome_size = genome_size(os.path.join(file_folder, file))
     coverage = sim_num*2*sim_len/cur_genome_size
