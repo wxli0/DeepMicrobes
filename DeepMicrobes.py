@@ -150,21 +150,23 @@ def model_fn(features, labels, mode, params):
     # Added for calculating the training accuracy of the entire dataset
    
     tf.enable_eager_execution()
-    entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec, flags.FLAGS.cpus)
-    entire_logits = model(entire_features)
+    print("input_tfrec is:",flags.FLAGS.input_tfrec)
+    # entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec, flags.FLAGS.cpus)
+    
+    # entire_logits = model(entire_features)
 
-    entire_predictions = {
-        'classes': tf.argmax(entire_logits, axis=1),
-        'probabilities': tf.nn.softmax(entire_logits)
-    }
+    # entire_predictions = {
+    #     'classes': tf.argmax(entire_logits, axis=1),
+    #     'probabilities': tf.nn.softmax(entire_logits)
+    # }
 
-    entire_accuracy = tf.metrics.accuracy(entire_labels, entire_predictions['classes'])
+    # entire_accuracy = tf.metrics.accuracy(entire_labels, entire_predictions['classes'])
 
-    metrics = {'entire_accuracy': entire_accuracy}
+    # metrics = {'entire_accuracy': entire_accuracy}
 
-    # Create a tensor named train_accuracy for logging purposes
-    tf.identity(entire_accuracy[1], name='entire_train_accuracy')
-    tf.summary.scalar('entire_train_accuracy', entire_accuracy[1])
+    # # Create a tensor named train_accuracy for logging purposes
+    # tf.identity(entire_accuracy[1], name='entire_train_accuracy')
+    # tf.summary.scalar('entire_train_accuracy', entire_accuracy[1])
 
     return tf.estimator.EstimatorSpec(
         mode=mode,
