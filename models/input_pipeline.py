@@ -76,8 +76,7 @@ def entire_input(input_tfrec, cpus):
     dataset = files.apply(tf.contrib.data.parallel_interleave(
         tf.data.TFRecordDataset, cycle_length=cpus))
 
-    dataset = dataset.map(map_func=_parse_function, num_parallel_calls=cpus)
-    entire_features, entire_labels = dataset
+    entire_features, entire_labels = dataset.map(map_func=_parse_function, num_parallel_calls=cpus)
 
     return entire_features, entire_labels
 
