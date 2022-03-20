@@ -149,6 +149,7 @@ def model_fn(features, labels, mode, params):
 
     # Added for calculating the training accuracy of the entire dataset
    
+    entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec)
     entire_logits = model(entire_features)
 
     entire_predictions = {
@@ -380,5 +381,4 @@ if __name__ == "__main__":
     model_specific_flags_embed_cnn()
     model_specific_flags_embed_lstm()
     flags_of_mode()
-    entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec)
     absl_app.run(main)
