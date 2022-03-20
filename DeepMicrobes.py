@@ -16,7 +16,8 @@ from models import embed_pool, embed_cnn, cnn_lstm, resnet_cnn, \
 
 from models.input_pipeline import input_function_train_kmer, input_function_train_one_hot, \
     input_function_predict_kmer, input_function_predict_one_hot, \
-    input_function_train_kmer_pad_to_fixed_len, input_function_predict_kmer_pad_to_fixed_len
+    input_function_train_kmer_pad_to_fixed_len, input_function_predict_kmer_pad_to_fixed_len, \
+    entire_input
 
 from models.define_flags import universal_flags, model_specific_flags_embed_cnn, \
     model_specific_flags_embed_lstm, flags_of_mode
@@ -145,6 +146,23 @@ def model_fn(features, labels, mode, params):
     # Create a tensor named train_accuracy for logging purposes
     tf.identity(accuracy[1], name='train_accuracy')
     tf.summary.scalar('train_accuracy', accuracy[1])
+
+    # Added for calculating the training accuracy of the entire dataset
+   
+    entire_logits = model(entire_features)
+
+    entire_predictions = {
+        'classes': tf.argmax(entire_logits, axis=1),
+        'probabilities': tf.nn.softmax(entire_logits)
+    }
+
+    entire_accuracy = tf.metrics.accuracy(entire_labels, entire_predictions['classes'])
+
+    metrics = {'entire_accuracy': entire_accuracy}
+
+    # Create a tensor named train_accuracy for logging purposes
+    tf.identity(entire_accuracy[1], name='entire_train_accuracy')
+    tf.summary.scalar('entire_train_accuracy', entire_accuracy[1])
 
     return tf.estimator.EstimatorSpec(
         mode=mode,
@@ -362,4 +380,5 @@ if __name__ == "__main__":
     model_specific_flags_embed_cnn()
     model_specific_flags_embed_lstm()
     flags_of_mode()
+    entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec)
     absl_app.run(main)

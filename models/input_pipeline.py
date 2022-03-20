@@ -48,6 +48,40 @@ def input_function_train_kmer(input_tfrec, repeat_count, batch_size, cpus):
     return batch_features, batch_labels
 
 
+def entire_input(input_tfrec, cpus):
+    """Parses tfrecord and returns dataset for training/eval.
+
+    Args:
+        input_tfrec: Filenames of tfrecord.
+        cpus: Number of cores used to running input pipeline.
+
+    Returns:
+        Entire dataset of (reads, label) pairs.
+    """
+
+    def _parse_function(serialized):
+        features = \
+            {
+                'read': tf.VarLenFeature(tf.int64),
+                'label': tf.FixedLenSequenceFeature([], tf.int64, allow_missing=True)
+            }
+        parsed_example = tf.parse_single_example(
+            serialized=serialized, features=features)
+        read = parsed_example['read']
+        label = parsed_example['label']
+        read = tf.sparse_tensor_to_dense(read)
+        d = read, label
+        return d
+
+    files = tf.data.Dataset.list_files(input_tfrec)
+    dataset = files.apply(tf.contrib.data.parallel_interleave(
+        tf.data.TFRecordDataset, cycle_length=cpus))
+
+    dataset = dataset.map(map_func=_parse_function, num_parallel_calls=cpus)
+    entire_features, entire_labels = dataset
+
+    return entire_features, entire_labels
+
 def input_function_train_kmer_pad_to_fixed_len(input_tfrec, repeat_count, batch_size, cpus,
                                                max_len, kmer):
     """Parses tfrecord and returns dataset for training/eval.
