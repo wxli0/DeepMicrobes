@@ -149,6 +149,7 @@ def model_fn(features, labels, mode, params):
 
     # Added for calculating the training accuracy of the entire dataset
    
+    tf.enable_eager_execution()
     entire_features, entire_labels = entire_input(flags.FLAGS.input_tfrec, flags.FLAGS.cpus)
     entire_logits = model(entire_features)
 
