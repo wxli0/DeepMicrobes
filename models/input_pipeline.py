@@ -70,8 +70,7 @@ def entire_input(input_tfrec, cpus):
         read = parsed_example['read']
         label = parsed_example['label']
         read = tf.sparse_tensor_to_dense(read)
-        d = read, label
-        return d
+        return read, label
 
     files = tf.data.Dataset.list_files(input_tfrec)
     dataset = files.apply(tf.contrib.data.parallel_interleave(
