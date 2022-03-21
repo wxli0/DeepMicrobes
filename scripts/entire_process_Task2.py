@@ -47,10 +47,20 @@ for forward_file in os.listdir(args.result_path):
 				-k 12")
 			print("======= done tfrec_predict_kmer =======")
 
+# DeepMicrobes.py \
+# 	--batch_size=${batch_size} --num_classes=${num_classes} \
+# 	--model_name=attention --encode_method=kmer \
+# 	--model_dir=${model_dir} \
+# 	--input_tfrec=${input} \
+# 	--vocab_size=8390658 --cpus=${cpu} \
+# 	--translate=False \
+# 	--pred_out=${output_prefix} \
+# 	--running_mode=predict_paired_class 
+
 		# use pre-trained model to predict tfrec test dataset
 		os.system("DeepMicrobes.py --num_classes=601 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/GTDB_r202_train_weights \
+			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/Task2_small \
 			--input_tfrec="+tfrec_file + " \
 			--vocab_size=8390658 --cpus=1 \
 			--translate=False --pred_out=" + prefix + " \
@@ -64,13 +74,13 @@ for forward_file in os.listdir(args.result_path):
 			-i "+result_file+" \
 			-o "+profile_file+" \
 			-t 50 \
-			-l "+ os.path.join(config.DM_path, "data/name2label_gtdb_species_r202.txt"))
+			-l "+ os.path.join(config.DM_path, "name2label/GTDB_small_representative.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
-			-l " +  os.path.join(config.DM_path, "data/name2label_gtdb_species_r202.txt"))
+			-l " +  os.path.join(config.DM_path, "name2label/GTDB_small_representative.txt"))
 		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 		
