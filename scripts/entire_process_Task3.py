@@ -53,9 +53,9 @@ for forward_file in os.listdir(args.result_path):
 			print("======= done tfrec_predict_kmer =======")
 
 		# use pre-trained model to predict tfrec test dataset
-		os.system("DeepMicrobes.py --num_classes=2 \
+		os.system("DeepMicrobes.py --num_classes=4 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=2 --model_dir=/mnt/sda/DeepMicrobes-data/weights/Task3_small_weights \
+			--embedding_dim=2 --model_dir=/mnt/sda/DeepMicrobes-data/weights/Task3_full_seed_1_weights \
 			--input_tfrec='"+tfrec_file + "' \
 			--vocab_size=8390658 --cpus=1 \
 			--translate=False --pred_out='" + prefix + "' \
