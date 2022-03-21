@@ -14,11 +14,11 @@ import os
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 3')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads')
+	default='/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads_seed_1')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
-		Default: /mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads")
+		Default: /mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label_reads_seed_1")
 
 for forward_file in os.listdir(args.result_path):
 	prefix = forward_file[:-13]
@@ -55,7 +55,7 @@ for forward_file in os.listdir(args.result_path):
 		# use pre-trained model to predict tfrec test dataset
 		os.system("DeepMicrobes.py --num_classes=4 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=10 --model_dir=/mnt/sda/DeepMicrobes-weights/Task3_weights \
+			--embedding_dim=4 --model_dir=/mnt/sda/DeepMicrobes-data/weights/Task3_small_weights \
 			--input_tfrec='"+tfrec_file + "' \
 			--vocab_size=8390658 --cpus=1 \
 			--translate=False --pred_out='" + prefix + "' \
