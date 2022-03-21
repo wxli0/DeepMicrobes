@@ -30,9 +30,9 @@ for forward_file in os.listdir(args.result_path):
 	category_file = prefix+".category_paired.txt"
 	prob_file = prefix+".prob_paired.txt"
 	if forward_file.endswith('_1.fa'):
-		if os.path.exists(profile_file) and os.path.exists(profile_0_file):
-			print("======================= skip "+forward_file+" =======================")
-			continue
+		# if os.path.exists(profile_file) and os.path.exists(profile_0_file):
+		# 	print("======================= skip "+forward_file+" =======================")
+		# 	continue
 		print("======================= start", prefix, "=======================")
 
 		# converts test dataset to tfrec
