@@ -9,9 +9,13 @@ Example:
     python3 ~/DeepMicrobes/scripts/gen_art_sim_file.py --seed=1
 """
 
-# Task 2
-file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
-out_prefix = "auto_art_Task2_small"
+# # Task 2
+# file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_small_representative_label"
+# out_prefix = "auto_art_Task2_small"
+
+# Task 2 with 34 species
+file_folder = "/mnt/sda/MLDSP-samples-r202/GTDB_mini_label"
+out_prefix = "auto_art_Task2_mini"
 
 # # Task 3 (training)
 # file_folder = "/mnt/sda/DeepMicrobes-data/Task3_g__Methanobrevibacter_B_label"
