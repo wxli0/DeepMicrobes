@@ -42,14 +42,6 @@ for forward_file in os.listdir(args.result_path):
 				-o '"+prefix+"' \
 				-s 4000000 \
 				-k 12")
-			print("Command is: "+"tfrec_predict_kmer.sh \
-				-f '"+forward_file+"' \
-				-r '"+reverse_file+"' \
-				-t fasta \
-				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
-				-o '"+prefix+"' \
-				-s 4000000 \
-				-k 12")
 			print("======= done tfrec_predict_kmer =======")
 
 		# use pre-trained model to predict tfrec test dataset

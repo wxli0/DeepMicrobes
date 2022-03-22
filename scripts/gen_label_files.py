@@ -31,13 +31,13 @@ data_path = config.MLDSP_data_path
 # src = 'GTDB_subset_representative_folder' 
 # dest = 'GTDB_subset_representative'
 
-# # for Task 2 with 601 classes
-# src = 'GTDB_small_representative_folder' 
-# dest = 'GTDB_small_representative'
+# for Task 2 with 601 classes
+src = 'GTDB_small_folder' 
+dest = 'GTDB_small'
 
-# for Task 2 with 34 classes
-src = 'GTDB_mini_folder' 
-dest = 'GTDB_mini'
+# # for Task 2 with 34 classes
+# src = 'GTDB_mini_folder' 
+# dest = 'GTDB_mini'
 
 # # for Task 3 with 4 classes
 # src = 'Task3_g__Methanobrevibacter_B_folder' 
