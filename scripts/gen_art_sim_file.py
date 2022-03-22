@@ -62,6 +62,8 @@ for file in os.listdir(file_folder):
     id_wout_label = ""
     if file.startswith('label_') and file.endswith('.fa'):
         id_wout_label = file[6:-2] # file starts with label_, ends with fa
+    elif file.endswith('.fa'):
+        id_wout_label = file[:-2]
     if file.endswith('.fasta'):
         id_wout_label = file[:-5]
     with open(out_file, 'a') as the_file:
