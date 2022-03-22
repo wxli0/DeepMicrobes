@@ -14,11 +14,11 @@ import os
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 2 (mini) with 34 classes')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/MLDSP-samples-r202/GTDB_mini_2_label_reads')
+	default='/mnt/sda/MLDSP-samples-r202/rumen_mags_reads')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
-		Default:/mnt/sda/MLDSP-samples-r202/GTDB_mini_2_label_reads")
+		Default:/mnt/sda/MLDSP-samples-r202/rumen_mags_reads")
 
 for forward_file in os.listdir(args.result_path):
 	prefix = forward_file[:-13]
