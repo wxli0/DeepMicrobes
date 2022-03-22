@@ -54,8 +54,8 @@ sim_num = 10000
 sim_len = 150
 
 out_file = out_prefix+"_"+str(seed)+".sh"
-if os.path.exists(out_prefix+str(seed)+".sh"):
-    os.remove(out_prefix+str(seed)+".sh")
+if os.path.exists(out_file):
+    os.remove(out_file)
 for file in os.listdir(file_folder):
     cur_genome_size = genome_size(os.path.join(file_folder, file))
     coverage = sim_num*2*sim_len/cur_genome_size
