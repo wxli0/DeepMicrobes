@@ -50,7 +50,8 @@ def genome_size(data_path):
         genome_size += len(sequence)
     return genome_size
 
-sim_num = 10000
+# sim_num = 10000 # for test, and train
+sim_num = 100000 # for train (large)
 sim_len = 150
 
 out_file = out_prefix+"_"+str(seed)+".sh"
