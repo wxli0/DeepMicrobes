@@ -1,5 +1,5 @@
 """
-Executes the entire procss of DeepMicrobes for Task 2 (GTDB/cow rumen mags). \
+Executes the entire procss of DeepMicrobes for Task 2 (GTDB/cow rumen mags) mini with 601 classes. \
 	The phases are converting test dataset to tfrec (tfrec_predict_kmer.sh), \
 		  using pre-trained model to predict tfrec test dataset (DeepMicrobes.py), \
 			  reporting profiles of the testing result (report_profile.sh)
@@ -12,73 +12,60 @@ import argparse
 import config
 import os
 
-parser = argparse.ArgumentParser(description='Execute entire process of Task 2 (real/dense)')
+parser = argparse.ArgumentParser(description='Execute entire process of Task 2 with 601 classes')
 parser.add_argument('--result_path', help='path of result files', \
 	default='/mnt/sda/DeepMicrobes-data/rumen_mags_reads_Task2_small_all')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
-		Default: /mnt/sda/DeepMicrobes-data/rumen_mags_reads_Task2_small_all")
+		Default:/mnt/sda/DeepMicrobes-data/rumen_mags_reads_Task2_small_all")
 
 for forward_file in os.listdir(args.result_path):
-	prefix = forward_file[:-5]
-	reverse_file = prefix+'_2.fa'
+	prefix = forward_file[:-13]
+	reverse_file = prefix+'.2_trimmed.fa'
 	tfrec_file = prefix+".tfrec"
 	result_file = prefix+".result.txt"
 	profile_file = prefix+".profile.txt"
 	profile_0_file = prefix+".0_profile.txt"
 	category_file = prefix+".category_paired.txt"
 	prob_file = prefix+".prob_paired.txt"
-	if forward_file.endswith('_1.fa'):
-		# if os.path.exists(profile_file) and os.path.exists(profile_0_file):
-		# 	print("======================= skip "+forward_file+" =======================")
-		# 	continue
+	if forward_file.endswith('.1_trimmed.fa'):
 		print("======================= start", prefix, "=======================")
 
 		# converts test dataset to tfrec
-		if not os.path.exists(tfrec_file):
+		if not os.path.exists(tfrec_file): # if tfrec file has not been created
 			os.system("tfrec_predict_kmer.sh \
-				-f "+dir+forward_file+" \
-				-r "+dir+reverse_file+" \
+				-f '"+forward_file+"' \
+				-r '"+reverse_file+"' \
 				-t fasta \
 				-v /mnt/sda/DeepMicrobes-data/tokens_merged_12mers.txt \
-				-o "+prefix+" \
+				-o '"+prefix+"' \
 				-s 4000000 \
 				-k 12")
 			print("======= done tfrec_predict_kmer =======")
 
-# DeepMicrobes.py \
-# 	--batch_size=${batch_size} --num_classes=${num_classes} \
-# 	--model_name=attention --encode_method=kmer \
-# 	--model_dir=${model_dir} \
-# 	--input_tfrec=${input} \
-# 	--vocab_size=8390658 --cpus=${cpu} \
-# 	--translate=False \
-# 	--pred_out=${output_prefix} \
-# 	--running_mode=predict_paired_class 
-
 		# use pre-trained model to predict tfrec test dataset
 		os.system("DeepMicrobes.py --num_classes=601 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/Task2_small_all_embed_50_weights \
-			--input_tfrec="+tfrec_file + " \
+			--embedding_dim=50 --model_dir=/mnt/sda/DeepMicrobes-data/weights/Task2_small_all_embed_50_weights \
+			--input_tfrec='"+tfrec_file + "' \
 			--vocab_size=8390658 --cpus=1 \
-			--translate=False --pred_out=" + prefix + " \
+			--translate=False --pred_out='" + prefix + "' \
 			--running_mode=predict_paired_class")
 		print("======= done DeepMicrobes =======")
-		os.system("paste " + category_file + " " + prob_file + " > " + result_file)
-		os.system("rm " + category_file+ " " + prob_file)
+		os.system("paste '" + category_file + "' '" + prob_file + "' > '" + result_file + "'")
+		os.system("rm '" + category_file+ "' '" + prob_file + "'")
 
 		# reports profiles of the testing result
 		os.system("report_profile.sh \
-			-i "+result_file+" \
-			-o "+profile_file+" \
+			-i '"+result_file+"' \
+			-o '"+profile_file+"' \
 			-t 50 \
 			-l "+ os.path.join(config.DM_path, "name2label/GTDB_small.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
-			-i "+result_file+" \
-			-o "+profile_0_file+" \
+			-i '"+result_file+"' \
+			-o '"+profile_0_file+"' \
 			-t 0 \
 			-l " +  os.path.join(config.DM_path, "name2label/GTDB_small.txt"))
 		print("======= done report_profile_0 =======")
