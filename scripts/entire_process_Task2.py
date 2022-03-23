@@ -5,7 +5,7 @@ Executes the entire procss of DeepMicrobes for Task 2 (GTDB/cow rumen mags). \
 			  reporting profiles of the testing result (report_profile.sh)
 
 No command line arguments are required.
-This script must be run in result_path (default: /mnt/sda/DeepMicrobes-data/rumen_mags)
+This script must be run in result_path (default: /mnt/sda/DeepMicrobes-data/rumen_mags_Task2_small_all)
 """
 
 import argparse
@@ -14,11 +14,11 @@ import os
 
 parser = argparse.ArgumentParser(description='Execute entire process of Task 2 (real/dense)')
 parser.add_argument('--result_path', help='path of result files', \
-	default='/mnt/sda/DeepMicrobes-data/rumen_mags')
+	default='/mnt/sda/DeepMicrobes-data/rumen_mags_Task2_small_all')
 args = parser.parse_args()
 if os.getcwd() != args.result_path:
 	raise Exception("Sorry, this file has to be run in args.result_path. \
-		Default: /mnt/sda/DeepMicrobes-data/rumen_mags")
+		Default: /mnt/sda/DeepMicrobes-data/rumen_mags_Task2_small_all")
 
 for forward_file in os.listdir(args.result_path):
 	prefix = forward_file[:-5]
@@ -60,7 +60,7 @@ for forward_file in os.listdir(args.result_path):
 		# use pre-trained model to predict tfrec test dataset
 		os.system("DeepMicrobes.py --num_classes=601 \
 			--model_name=attention --encode_method=kmer \
-			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/Task2_small \
+			--embedding_dim=100 --model_dir=/mnt/sda/DeepMicrobes-weights/Task2_small_all_embed_50_weights \
 			--input_tfrec="+tfrec_file + " \
 			--vocab_size=8390658 --cpus=1 \
 			--translate=False --pred_out=" + prefix + " \
@@ -74,13 +74,13 @@ for forward_file in os.listdir(args.result_path):
 			-i "+result_file+" \
 			-o "+profile_file+" \
 			-t 50 \
-			-l "+ os.path.join(config.DM_path, "name2label/GTDB_small_representative.txt"))
+			-l "+ os.path.join(config.DM_path, "name2label/GTDB_small.txt"))
 		print("======= done report_profile 50 =======")
 		os.system("report_profile.sh \
 			-i "+result_file+" \
 			-o "+profile_0_file+" \
 			-t 0 \
-			-l " +  os.path.join(config.DM_path, "name2label/GTDB_small_representative.txt"))
+			-l " +  os.path.join(config.DM_path, "name2label/GTDB_small.txt"))
 		print("======= done report_profile_0 =======")
 		print("======================= done", prefix, "=======================")
 		
