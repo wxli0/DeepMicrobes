@@ -32,6 +32,7 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     total = 0
     correct = 0
     rejected = 0
+    classified = 0
     df = pd.read_csv(df_path, index_col=0, header=0, dtype = str)
 
     for index, row in df.iterrows():
@@ -47,6 +48,7 @@ def calc_pr(df_path, res_path, ignore_indices = []):
             rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
             if label in prof_0_dict:
                 correct += prof_0_dict[label]
+            print("total:", total, "correct:", correct, "rejected", rejected)
 
     classified_acc = 0
     if (total-rejected) != 0:
@@ -74,10 +76,10 @@ ignore_indices1 =  ['RUG428.fasta', 'RUG635.fasta', 'RUG684.fasta', 'RUG687.fast
 
 classified_acc, absolute_acc, adjusted_acc, rejection_rate = calc_pr(path1, res_path1, ignore_indices=ignore_indices1)
 print("==== GTDB result ====")
-print("classified accuracy is:", classified_acc)
+print("constrained accuracy is:", classified_acc)
 print("absolute accuracy is:", absolute_acc)
-print("adjusted accuracy is:", adjusted_acc)
-print("rejection rate is:", rejection_rate)
+print("weighted accuracy is:", adjusted_acc)
+print("unclassified rate is:", rejection_rate)
 
 
 
