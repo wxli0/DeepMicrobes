@@ -32,10 +32,10 @@ def calc_pr(df_path, res_path, ignore_indices = []):
     total = 0
     correct = 0
     rejected = 0
-    classified = 0
     df = pd.read_csv(df_path, index_col=0, header=0, dtype = str)
 
     for index, row in df.iterrows():
+        print("index is:", index)
         label = df.loc[index]['gtdb-tk-species']
         index = 'art_'+index
         if index not in ignore_indices and label != 's__':
