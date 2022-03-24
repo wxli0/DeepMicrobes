@@ -42,13 +42,13 @@ def calc_pr(df_path, res_path, ignore_indices = []):
             profile_path = os.path.join(res_path, index.split('.')[0]+".profile.txt")
             if not os.path.exists(profile_path): # if result has not been generated
                 continue
-            prof_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+".profile.txt"))
             print("before update total:", total, "correct:", correct, "rejected", rejected)
+            prof_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+".profile.txt"))
             prof_0_dict = readin_dict(os.path.join(res_path, index.split('.')[0]+'.0_profile.txt'))
             total += sum(prof_0_dict.values())
             rejected += sum(prof_0_dict.values())-sum(prof_dict.values())
-            if label in prof_0_dict:
-                correct += prof_0_dict[label]
+            if label in prof_dict:
+                correct += prof_dict[label]
             print("total:", total, "correct:", correct, "rejected", rejected)
 
     classified_acc = 0
