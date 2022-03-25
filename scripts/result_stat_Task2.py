@@ -70,7 +70,7 @@ def calc_pr(df_path, res_path, ignore_indices = []):
 
 path1 = os.path.join(config.MT_MAG_path, 'outputs-GTDB-r202-archive1/GTDB-r202-prediction-full-path.csv')
 res_path1 = '/mnt/sda/DeepMicrobes-data/rumen_mags_reads_Task2_small_all'
-ignore_indices1 =  ['RUG428.fasta', 'RUG635.fasta', 'RUG684.fasta', 'RUG687.fasta', 'RUG732.fasta', 'RUG752.fasta', 'RUG789.fasta', 'RUG820.fasta']
+ignore_indices1 =  ['RUG428.fasta', 'RUG635.fasta', 'RUG684.fasta', 'RUG687.fasta', 'RUG732.fasta', 'RUG752.fasta', 'RUG789.fasta', 'RUG820.fasta'] # with GTDB-Tk prediction being s__
 
 classified_acc, absolute_acc, adjusted_acc, rejection_rate = calc_pr(path1, res_path1, ignore_indices=ignore_indices1)
 print("==== GTDB result ====")
