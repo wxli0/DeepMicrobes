@@ -1,19 +1,10 @@
 #!/usr/bin/bash
 
-## get the first 1,000 reads 
+# get the first 1,000 reads for kraken 2
+# bash first_1000.sh 1 (for Task 1)
+# bash first_1000.sh 2 (for Task 2)
 
-while getopts “t:” OPTION
-do
-     case ${OPTION} in
-         t)
-             task=${OPTARG}
-             ;;
-         ?)
-             usage
-             exit
-             ;;
-     esac
-done
+task=$1
 
 dir=""
 
