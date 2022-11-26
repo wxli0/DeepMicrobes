@@ -2,10 +2,10 @@
 
 ## get the first 1,000 reads 
 
-while getopts “--task:” OPTION
+while getopts “task:” OPTION
 do
      case ${OPTION} in
-         --task)
+         task)
              task=${OPTARG}
              ;;
          ?)
