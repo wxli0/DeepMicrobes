@@ -17,6 +17,6 @@ mkdir $new_dir
 
 if [[ $task -eq 2 ]]; then
     for file in ${dir}/*1_trimmed.fa ; do
-        cat ${file} |head -2000 > ${new_dir}/${file}
+        cat ${file} |head -2000 > ${new_dir}/`basename "$file"`
     done
 fi
