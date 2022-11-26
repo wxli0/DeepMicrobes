@@ -2,8 +2,21 @@
 
 ## get the first 1,000 reads 
 
-task=$1
+while getopts “i:” OPTION
+do
+     case ${OPTION} in
+         i)
+             task=${OPTARG}
+             ;;
+         ?)
+             usage
+             exit
+             ;;
+     esac
+done
+
 dir=""
+
 if [[ $task -eq 2 ]]; then
     dir="/mnt/sda/DeepMicrobes-data/rumen_mags_reads_Task2_small_all"
 fi
@@ -13,6 +26,6 @@ mkdir $new_dir
 
 if [[ $task -eq 2 ]]; then
     for file in ${dir}/*1_trimmed.fa ; do
-        cat ${file} |head -2000 > ${new_dir}/file
+        cat ${file} |head -2000 > ${new_dir}/${file}
     done
 fi
