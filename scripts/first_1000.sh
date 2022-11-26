@@ -13,6 +13,11 @@ if [[ $task -eq 2 ]]; then
 fi
 
 new_dir=${dir}_kraken
+
+if [ -d "$new_dir" ]; 
+    then rm -r $new_dir; 
+fi
+
 mkdir $new_dir
 
 if [[ $task -eq 2 ]]; then
