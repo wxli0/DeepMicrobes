@@ -31,9 +31,9 @@ for rumen_folder_id in rumen_folder_ids:
             for kraken_pred in kraken_preds:
                 if kraken_pred != 0:
                     classified += 1
-                if kraken_pred not in list(gtdb_db.index):
+                if kraken_pred not in list(gtdb_db.index) or kraken_pred == 117144:
                     continue
-                print(gtdb_db.loc[kraken_pred]['gtdb_taxonomy'])
+                # print(gtdb_db.loc[kraken_pred]['gtdb_taxonomy'])
                 gtdb_taxonomy_list =  gtdb_db.loc[kraken_pred]['gtdb_taxonomy'].split(";")
                 del gtdb_taxonomy_list[1]
                 
