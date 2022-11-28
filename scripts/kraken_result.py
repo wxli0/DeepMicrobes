@@ -23,7 +23,7 @@ for rumen_folder_id in rumen_folder_ids:
         if file.endswith("_result.txt"):
             file_id = file.split('_')[1][:-2]+".fasta"
             print("file_id is:", file_id)
-            if file_id == "RUG820.fasta":
+            if file_id == "RUG820.fasta": # TODO: temporarily added this
                 continue
             # look up the file_id classification by GTDB-Tk
             gtdb_tk_label_list = gtdb_tk_ground_truth.loc[file_id]
@@ -35,7 +35,9 @@ for rumen_folder_id in rumen_folder_ids:
                     classified += 1
                 if kraken_pred not in list(gtdb_db.index) or kraken_pred == 117144:
                     continue
-                # print(gtdb_db.loc[kraken_pred]['gtdb_taxonomy'])
+                
+                if (isinstance(gtdb_db.loc[kraken_pred]['gtdb_taxonomy'], pd.Series)):
+                    continue
                 gtdb_taxonomy_list =  gtdb_db.loc[kraken_pred]['gtdb_taxonomy'].split(";")
                 del gtdb_taxonomy_list[1]
                 
