@@ -23,6 +23,8 @@ for rumen_folder_id in rumen_folder_ids:
         if file.endswith("_result.txt"):
             file_id = file.split('_')[1][:-2]+".fasta"
             print("file_id is:", file_id)
+            if file_id == "RUG820.fasta":
+                continue
             # look up the file_id classification by GTDB-Tk
             gtdb_tk_label_list = gtdb_tk_ground_truth.loc[file_id]
             kraken_df = pd.read_csv(os.path.join(cur_dir, file), sep='\t')
