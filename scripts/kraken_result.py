@@ -27,6 +27,8 @@ for rumen_folder_id in rumen_folder_ids:
                 continue
             # look up the file_id classification by GTDB-Tk
             gtdb_tk_label_list = gtdb_tk_ground_truth.loc[file_id]
+            if os.stat(os.path.join(cur_dir, file)).st_size == 0:
+                continue
             kraken_df = pd.read_csv(os.path.join(cur_dir, file), sep='\t')
             total += kraken_df.shape[0]
             kraken_preds = list(kraken_df.iloc[:, 2])
@@ -35,7 +37,7 @@ for rumen_folder_id in rumen_folder_ids:
                     classified += 1
                 if kraken_pred not in list(gtdb_db.index) or kraken_pred == 117144:
                     continue
-                
+
                 if (isinstance(gtdb_db.loc[kraken_pred]['gtdb_taxonomy'], pd.Series)):
                     continue
                 gtdb_taxonomy_list =  gtdb_db.loc[kraken_pred]['gtdb_taxonomy'].split(";")
