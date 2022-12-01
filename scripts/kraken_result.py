@@ -27,6 +27,8 @@ for file in os.listdir(cur_dir):
         if os.stat(os.path.join(cur_dir, file)).st_size == 0:
             continue
         kraken_df = pd.read_csv(os.path.join(cur_dir, file), sep='\t')
+        print("kraken_df is:")
+        print(kraken_df)
         total += kraken_df.shape[0]
         kraken_preds = list(kraken_df.iloc[:, 2])
         for kraken_pred in kraken_preds:
