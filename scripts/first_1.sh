@@ -14,8 +14,6 @@ fi
 
 mkdir $new_dir
 
-if [[ $task -eq 2 ]]; then
-    for file in ${dir}/*.fasta ; do
-        cat ${file} |head -2 > ${new_dir}/`basename "$file"`
-    done
-fi
+for file in ${dir}/*.fasta ; do
+    cat ${file} |head -2 > ${new_dir}/`basename "$file"`
+done
