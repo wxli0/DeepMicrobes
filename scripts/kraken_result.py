@@ -51,12 +51,18 @@ for file in os.listdir(cur_dir):
             if len(gtdb_taxonomy_list) >= 7 and gtdb_taxonomy_list[6] == gtdb_tk_label_list["gtdb-tk-species"]:
                 correct += 1
 
-        print("current CA is:", correct/classified)
+        if classified == 0:
+            print("current CA is:", 0)
+        else:
+            print("current CA is:", correct/classified)
         print("current AA is:", correct/total)
         print("current WA is:", weighted_correct/total)
         print("current CR is:", classified/total)
 
-print("CA is:", correct/classified)
+if classified == 0:
+    print("current CA is:", 0)
+else:
+    print("CA is:", correct/classified)
 print("AA is:", correct/total)
 print("WA is:", weighted_correct/total)
 print("CR is:", classified/total)
