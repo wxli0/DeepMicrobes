@@ -9,7 +9,7 @@ gtdb_db = pd.read_csv("~/MT-MAG/outputs-GTDB-r202-archive3/db_samples.tsv", sep=
 print(gtdb_db.head())
 # calculate classification accuracies
 
-base_path = "/mnt/sda/DeepMicrobes-data"
+base_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/d__Bacteria_kraken/"
 correct = 0
 weighted_correct = 0
 total = 0
