@@ -9,21 +9,19 @@ gtdb_db = pd.read_csv("~/MT-MAG/outputs-GTDB-r202-archive3/db_samples.tsv", sep=
 print(gtdb_db.head())
 # calculate classification accuracies
 
-base_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/d__Bacteria_kraken/"
+dataset_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/d__Bacteria_kraken/"
 correct = 0
 weighted_correct = 0
 total = 0
 classified = 0
 gtdb_tk_ranks = ["gtdb-tk-domain","gtdb-tk-phylum","gtdb-tk-class","gtdb-tk-order","gtdb-tk-family","gtdb-tk-genus","gtdb-tk-species"]
 
-cur_dir = os.path.join(base_path, "rumen_mags_kraken")
+cur_dir = dataset_path
 print("cur_dir is:", cur_dir)
 for file in os.listdir(cur_dir):
     if file.endswith("_result.txt"):
-        file_id = file.split('_')[1][:-2]+".fasta"
+        file_id = file.split('_')[0]+".fasta"
         print("file_id is:", file_id)
-        if file_id == "RUG820.fasta": # TODO: temporarily added this
-            continue
         # look up the file_id classification by GTDB-Tk
         gtdb_tk_label_list = gtdb_tk_ground_truth.loc[file_id]
         if os.stat(os.path.join(cur_dir, file)).st_size == 0:
