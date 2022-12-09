@@ -1,3 +1,4 @@
+import numpy as np
 import os 
 import pandas as pd
 import sys
@@ -9,7 +10,7 @@ gtdb_db = pd.read_csv("~/MT-MAG/outputs-GTDB-r202-archive3/db_samples.tsv", sep=
 print(gtdb_db.head())
 # calculate classification accuracies
 
-result_dir_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/d__Bacteria_kraken/"
+result_dir_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/root_short_kraken/"
 
 gtdb_tk_ranks = ["gtdb-tk-domain","gtdb-tk-phylum","gtdb-tk-class","gtdb-tk-order","gtdb-tk-family","gtdb-tk-genus","gtdb-tk-species"]
 ranks = ["domain", "phylum", "class", "order", "family", "genus", "species"]
@@ -55,24 +56,42 @@ def compute_result_at_rank(result_dir_path, rank):
                 classified += 1
                 
                 correct_label_len = 0
-                for i in range(0, min(len(gtdb_taxonomy_list), rank_index+1)):
-                    rank = gtdb_tk_ranks[i]
-                    if gtdb_taxonomy_list[i] == gtdb_tk_label_list[rank]:
-                        correct_label_len += 1
-                    else:
-                        break
+
+                last_ind = True
+                # for i in reversed(range(0, min(len(gtdb_taxonomy_list), rank_index+1))):
+                last_rank_ind = min(len(gtdb_taxonomy_list)-1, rank_index)
+                    
+                if gtdb_taxonomy_list[last_rank_ind] == gtdb_tk_label_list[last_rank_ind]:
+                    correct_label_len += last_rank_ind+1
+                    # cur_rank = gtdb_tk_ranks[i]
+                    # if gtdb_taxonomy_list[i] == gtdb_tk_label_list[cur_rank]:
+                    #     correct_label_len += 1
+                    # else:
+                    #     break
+
                 gtdb_tk_rank_index = gtdb_tk_ranks.index(gtdb_tk_rank)
-                weighted_correct += correct_label_len/(rank_index+1)
+                weighted_correct += correct_label_len/(rank_index+1)  
                 if len(gtdb_taxonomy_list) >= (gtdb_tk_rank_index+1) and gtdb_taxonomy_list[gtdb_tk_rank_index] == gtdb_tk_label_list[gtdb_tk_rank]:
                     correct += 1
+
     CA = 0
     if classified != 0:
         CA = correct/classified
     AA = correct/total
     WA = weighted_correct/total
     CR = classified/total
-    return CA, AA, WA, CR
+    return round(CA,4), round(AA, 4), round(WA, 4), round(CR, 4)
 
+CAs = []
+AAs = []
+WAs = []
+CRs = []
 for rank in ranks:
     CA, AA, WA, CR = compute_result_at_rank(result_dir_path, rank)
+    CAs.append(CA)
+    AAs.append(AA)
+    WAs.append(WA)
+    CRs.append(CR)
     print(rank, "accuracies are:", "CA:", CA, "AA", AA, "WA:", WA, "CR:", CR)
+print("avg accuracies are:", "CA:", round(np.mean(CAs), 4), "AA", round(np.mean(AAs),4),\
+    "WA:", round(np.mean(WAs), 4), "CR:", round(np.mean(CRs), 4))

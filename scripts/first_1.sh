@@ -3,7 +3,7 @@
 # get the first 1 contig for kraken 2 (Task 2 rumen mags)
 
 
-dir="/mnt/sda/MLDSP-samples-r202/rumen_mags/d__Bacteria"
+dir="/mnt/sda/MLDSP-samples-r202/rumen_mags/root"
 
 
 new_dir=${dir}_kraken
