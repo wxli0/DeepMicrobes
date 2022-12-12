@@ -11,6 +11,8 @@ print(gtdb_db.head())
 # calculate classification accuracies
 
 result_dir_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/root_short_kraken/"
+# result_dir_path = "/mnt/sda/MLDSP-samples-r202/rumen_mags/root_kraken/"
+
 
 gtdb_tk_ranks = ["gtdb-tk-domain","gtdb-tk-phylum","gtdb-tk-class","gtdb-tk-order","gtdb-tk-family","gtdb-tk-genus","gtdb-tk-species"]
 ranks = ["domain", "phylum", "class", "order", "family", "genus", "species"]
@@ -55,23 +57,20 @@ def compute_result_at_rank(result_dir_path, rank):
                     continue
                 classified += 1
                 
-                correct_label_len = 0
+                weight_incre = 0
+                for cur_index in range(rank_index+1):
+                    cur_rank = ranks[cur_index]
+                    predicted_label = gtdb_taxonomy_list[cur_index]
+                    true_label = gtdb_tk_label_list[cur_index]
+                    if true_label == predicted_label:
+                        weight_incre += 1
+                    elif 'uncertain' in predicted_label:
+                        break
+                    elif predicted_label != true_label:
+                        weight_incre -= 1/2
+                weighted_correct += weight_incre/(rank_index+1)  
 
-                last_ind = True
-                # for i in reversed(range(0, min(len(gtdb_taxonomy_list), rank_index+1))):
-                last_rank_ind = min(len(gtdb_taxonomy_list)-1, rank_index)
-                    
-                if gtdb_taxonomy_list[last_rank_ind] == gtdb_tk_label_list[last_rank_ind]:
-                    correct_label_len += last_rank_ind+1
-                    # cur_rank = gtdb_tk_ranks[i]
-                    # if gtdb_taxonomy_list[i] == gtdb_tk_label_list[cur_rank]:
-                    #     correct_label_len += 1
-                    # else:
-                    #     break
-
-                gtdb_tk_rank_index = gtdb_tk_ranks.index(gtdb_tk_rank)
-                weighted_correct += correct_label_len/(rank_index+1)  
-                if len(gtdb_taxonomy_list) >= (gtdb_tk_rank_index+1) and gtdb_taxonomy_list[gtdb_tk_rank_index] == gtdb_tk_label_list[gtdb_tk_rank]:
+                if weight_incre == (rank_index+1):
                     correct += 1
 
     CA = 0
